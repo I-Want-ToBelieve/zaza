@@ -1,0 +1,654 @@
+{
+  "LanguageTree:children": {
+    "annotations": [],
+    "signature": "LanguageTree:children({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": ["Returns a map of language to child tree."],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:contains": {
+    "annotations": [],
+    "signature": "LanguageTree:contains({self}, {range})",
+    "parameters": [
+      ["", "self"],
+      ["", "range"]
+    ],
+    "parameters_doc": {
+      "range": "(table) `{ start_line, start_col, end_line, end_col }`",
+      "self": ""
+    },
+    "doc": ["Determines whether {range} is contained in the |LanguageTree|."],
+    "return": ["(boolean)"],
+    "seealso": []
+  },
+  "LanguageTree:destroy": {
+    "annotations": [],
+    "signature": "LanguageTree:destroy({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": [
+      "Destroys this |LanguageTree| and all its children.",
+      "Any cleanup logic should be performed here.",
+      "Note: This DOES NOT remove this tree from a parent. Instead, `remove_child` must be called on the parent to remove it."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:for_each_child": {
+    "annotations": [],
+    "signature": "LanguageTree:for_each_child({self}, {fn}, {include_self})",
+    "parameters": [
+      ["", "self"],
+      ["", "fn"],
+      ["", "include_self"]
+    ],
+    "parameters_doc": {
+      "fn": "function(tree: LanguageTree, lang: string)",
+      "include_self": "(boolean) Whether to include the invoking tree in the\n                    results",
+      "self": ""
+    },
+    "doc": ["Invokes the callback for each |LanguageTree| and its children recursively"],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:for_each_tree": {
+    "annotations": [],
+    "signature": "LanguageTree:for_each_tree({self}, {fn})",
+    "parameters": [
+      ["", "self"],
+      ["", "fn"]
+    ],
+    "parameters_doc": {
+      "fn": "function(tree: TSTree, languageTree: LanguageTree)",
+      "self": ""
+    },
+    "doc": [
+      "Invokes the callback for each |LanguageTree| recursively.",
+      "Note: This includes the invoking tree's child trees as well."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:included_regions": {
+    "annotations": [],
+    "signature": "LanguageTree:included_regions({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": ["Gets the set of included regions"],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:invalidate": {
+    "annotations": [],
+    "signature": "LanguageTree:invalidate({self}, {reload})",
+    "parameters": [
+      ["", "self"],
+      ["", "reload"]
+    ],
+    "parameters_doc": { "self": "" },
+    "doc": ["Invalidates this parser and all its children"],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:is_valid": {
+    "annotations": [],
+    "signature": "LanguageTree:is_valid({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": [
+      "Determines whether this tree is valid. If the tree is invalid, call `parse()` . This will return the updated tree."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:lang": {
+    "annotations": [],
+    "signature": "LanguageTree:lang({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": ["Gets the language of this tree node."],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:language_for_range": {
+    "annotations": [],
+    "signature": "LanguageTree:language_for_range({self}, {range})",
+    "parameters": [
+      ["", "self"],
+      ["", "range"]
+    ],
+    "parameters_doc": {
+      "range": "(table) `{ start_line, start_col, end_line, end_col }`",
+      "self": ""
+    },
+    "doc": ["Gets the appropriate language that contains {range}."],
+    "return": ["LanguageTree Managing {range}"],
+    "seealso": []
+  },
+  "LanguageTree:named_node_for_range": {
+    "annotations": [],
+    "signature": "LanguageTree:named_node_for_range({self}, {range}, {opts})",
+    "parameters": [
+      ["", "self"],
+      ["", "range"],
+      ["", "opts"]
+    ],
+    "parameters_doc": {
+      "range": "(table) `{ start_line, start_col, end_line, end_col }`",
+      "opts": "(table|nil) Optional keyword arguments:\n             • ignore_injections boolean Ignore injected languages\n               (default true)",
+      "self": ""
+    },
+    "doc": ["Gets the smallest named node that contains {range}."],
+    "return": ["userdata|nil Found |tsnode|"],
+    "seealso": []
+  },
+  "LanguageTree:parse": {
+    "annotations": [],
+    "signature": "LanguageTree:parse({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": [
+      "Parses all defined regions using a treesitter parser for the language this\ntree represents. This will run the injection query for this language to\ndetermine if any child languages should be created."
+    ],
+    "return": ["userdata[] Table of parsed |tstree|", "(table) Change list"],
+    "seealso": []
+  },
+  "LanguageTree:register_cbs": {
+    "annotations": [],
+    "signature": "LanguageTree:register_cbs({self}, {cbs})",
+    "parameters": [
+      ["", "self"],
+      ["", "cbs"]
+    ],
+    "parameters_doc": {
+      "cbs": "(table) An |nvim_buf_attach()|-like table argument with the\n            following handlers:\n            • `on_bytes` : see |nvim_buf_attach()|, but this will be called after the parsers callback.\n            • `on_changedtree` : a callback that will be called every time\n              the tree has syntactical changes. It will only be passed one\n              argument, which is a table of the ranges (as node ranges)\n              that changed.\n            • `on_child_added` : emitted when a child is added to the\n              tree.\n            • `on_child_removed` : emitted when a child is removed from\n              the tree.",
+      "self": ""
+    },
+    "doc": ["Registers callbacks for the |LanguageTree|."],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:source": {
+    "annotations": [],
+    "signature": "LanguageTree:source({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": ["Returns the source content of the language tree (bufnr or string)."],
+    "return": [],
+    "seealso": []
+  },
+  "LanguageTree:tree_for_range": {
+    "annotations": [],
+    "signature": "LanguageTree:tree_for_range({self}, {range}, {opts})",
+    "parameters": [
+      ["", "self"],
+      ["", "range"],
+      ["", "opts"]
+    ],
+    "parameters_doc": {
+      "range": "(table) `{ start_line, start_col, end_line, end_col }`",
+      "opts": "(table|nil) Optional keyword arguments:\n             • ignore_injections boolean Ignore injected languages\n               (default true)",
+      "self": ""
+    },
+    "doc": ["Gets the tree that contains {range}."],
+    "return": ["userdata|nil Contained |tstree|"],
+    "seealso": []
+  },
+  "LanguageTree:trees": {
+    "annotations": [],
+    "signature": "LanguageTree:trees({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": [
+      "Returns all trees this language tree contains. Does not include child\nlanguages."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "Query:iter_captures": {
+    "annotations": [],
+    "signature": "Query:iter_captures({self}, {node}, {source}, {start}, {stop})",
+    "parameters": [
+      ["", "self"],
+      ["", "node"],
+      ["", "source"],
+      ["", "start"],
+      ["", "stop"]
+    ],
+    "parameters_doc": {
+      "node": "userdata |tsnode| under which the search will occur",
+      "source": "(number|string) Source buffer or string to extract text from",
+      "start": "(number) Starting line for the search",
+      "stop": "(number) Stopping line for the search (end-exclusive)",
+      "self": ""
+    },
+    "doc": [
+      "Iterate over all captures from all matches inside {node}",
+      "{source} is needed if the query contains predicates; then the caller must\nensure to use a freshly parsed tree consistent with the current text of\nthe buffer (if relevant). {start_row} and {end_row} can be used to limit\nmatches inside a row range (this is typically used with root node as the\n{node}, i.e., to get syntax highlight matches in the current viewport).\nWhen omitted, the {start} and {end} row values are used from the given\nnode.",
+      "The iterator returns three values: a numeric id identifying the capture,\nthe captured node, and metadata from any directives processing the match.\nThe following example shows how to get captures by name: >\n\n for id, node, metadata in query:iter_captures(tree:root(), bufnr, first, last) do\n   local name = query.captures[id] -- name of the capture in the query\n   -- typically useful info about the node:\n   local type = node:type() -- type of the captured node\n   local row1, col1, row2, col2 = node:range() -- range of the capture\n   ... use the info here ...\n end\n \n<"
+    ],
+    "return": [
+      "(number) capture Matching capture id",
+      "(table) capture_node Capture for {node}",
+      "(table) metadata for the {capture}"
+    ],
+    "seealso": []
+  },
+  "Query:iter_matches": {
+    "annotations": [],
+    "signature": "Query:iter_matches({self}, {node}, {source}, {start}, {stop})",
+    "parameters": [
+      ["", "self"],
+      ["", "node"],
+      ["", "source"],
+      ["", "start"],
+      ["", "stop"]
+    ],
+    "parameters_doc": {
+      "node": "userdata |tsnode| under which the search will occur",
+      "source": "(number|string) Source buffer or string to search",
+      "start": "(number) Starting line for the search",
+      "stop": "(number) Stopping line for the search (end-exclusive)",
+      "self": ""
+    },
+    "doc": [
+      "Iterates the matches of self on a given range.",
+      "Iterate over all matches within a {node}. The arguments are the same as\nfor |query:iter_captures()| but the iterated values are different: an\n(1-based) index of the pattern in the query, a table mapping capture\nindices to nodes, and metadata from any directives processing the match.\nIf the query has more than one pattern, the capture table might be sparse\nand e.g. `pairs()` method should be used over `ipairs` . Here is an example iterating over all captures in every match: >\n\n for pattern, match, metadata in cquery:iter_matches(tree:root(), bufnr, first, last) do\n   for id, node in pairs(match) do\n     local name = query.captures[id]\n     -- `node` was captured by the `name` capture in the match\n\n     local node_data = metadata[id] -- Node level metadata\n\n     ... use the info here ...\n   end\n end\n \n<"
+    ],
+    "return": ["(number) pattern id", "(table) match", "(table) metadata"],
+    "seealso": []
+  },
+  "TSHighlighter:destroy": {
+    "annotations": [],
+    "signature": "TSHighlighter:destroy({self})",
+    "parameters": [["", "self"]],
+    "parameters_doc": { "self": "" },
+    "doc": ["Removes all internal references to the highlighter"],
+    "return": [],
+    "seealso": []
+  },
+  "add_directive": {
+    "annotations": [],
+    "signature": "add_directive({name}, {handler}, {force})",
+    "parameters": [
+      ["", "name"],
+      ["", "handler"],
+      ["", "force"]
+    ],
+    "parameters_doc": {
+      "name": "(string) Name of the directive, without leading #",
+      "handler": "function(match:string, pattern:string, bufnr:number,\n               predicate:function, metadata:table)"
+    },
+    "doc": [
+      "Adds a new directive to be used in queries",
+      "Handlers can set match level data by setting directly on the metadata\nobject `metadata.key = value`, additionally, handlers can set node level\ndata by using the capture id on the metadata table\n`metadata[capture_id].key = value`"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "add_predicate": {
+    "annotations": [],
+    "signature": "add_predicate({name}, {handler}, {force})",
+    "parameters": [
+      ["", "name"],
+      ["", "handler"],
+      ["", "force"]
+    ],
+    "parameters_doc": {
+      "name": "(string) Name of the predicate, without leading #",
+      "handler": "function(match:string, pattern:string, bufnr:number,\n               predicate:function)"
+    },
+    "doc": ["Adds a new predicate to be used in queries"],
+    "return": [],
+    "seealso": []
+  },
+  "get_captures_at_cursor": {
+    "annotations": [],
+    "signature": "get_captures_at_cursor({winnr})",
+    "parameters": [["", "winnr"]],
+    "parameters_doc": {
+      "winnr": "(number|nil) Window handle or 0 for current window (default)"
+    },
+    "doc": ["Returns a list of highlight capture names under the cursor"],
+    "return": ["string[] List of capture names"],
+    "seealso": []
+  },
+  "get_captures_at_position": {
+    "annotations": [],
+    "signature": "get_captures_at_position({bufnr}, {row}, {col})",
+    "parameters": [
+      ["", "bufnr"],
+      ["", "row"],
+      ["", "col"]
+    ],
+    "parameters_doc": {
+      "bufnr": "(number) Buffer number (0 for current buffer)",
+      "row": "(number) Position row",
+      "col": "(number) Position column"
+    },
+    "doc": [
+      "Returns a list of highlight captures at the given position",
+      "Each capture is represented by a table containing the capture name as a\nstring as well as a table of metadata (`priority`, `conceal`, ...; empty\nif none are defined)."
+    ],
+    "return": [
+      "table[] List of captures `{ capture = \"capture name\", metadata = { ...\n    } }`"
+    ],
+    "seealso": []
+  },
+  "get_node_at_cursor": {
+    "annotations": [],
+    "signature": "get_node_at_cursor({winnr})",
+    "parameters": [["", "winnr"]],
+    "parameters_doc": {
+      "winnr": "(number|nil) Window handle or 0 for current window (default)"
+    },
+    "doc": ["Returns the smallest named node under the cursor"],
+    "return": ["(string) Name of node under the cursor"],
+    "seealso": []
+  },
+  "get_node_at_position": {
+    "annotations": [],
+    "signature": "get_node_at_position({bufnr}, {row}, {col}, {opts})",
+    "parameters": [
+      ["", "bufnr"],
+      ["", "row"],
+      ["", "col"],
+      ["", "opts"]
+    ],
+    "parameters_doc": {
+      "bufnr": "(number) Buffer number (0 for current buffer)",
+      "row": "(number) Position row",
+      "col": "(number) Position column",
+      "opts": "(table) Optional keyword arguments:\n             • ignore_injections boolean Ignore injected languages\n               (default true)"
+    },
+    "doc": ["Returns the smallest named node at the given position"],
+    "return": ["userdata |tsnode| under the cursor"],
+    "seealso": []
+  },
+  "get_node_range": {
+    "annotations": [],
+    "signature": "get_node_range({node_or_range})",
+    "parameters": [["", "node_or_range"]],
+    "parameters_doc": {
+      "node_or_range": "(userdata|table) |tsnode| or table of positions"
+    },
+    "doc": ["Returns the node's range or an unpacked range table"],
+    "return": ["(table) `{ start_row, start_col, end_row, end_col }`"],
+    "seealso": []
+  },
+  "get_node_text": {
+    "annotations": [],
+    "signature": "get_node_text({node}, {source}, {opts})",
+    "parameters": [
+      ["", "node"],
+      ["", "source"],
+      ["", "opts"]
+    ],
+    "parameters_doc": {
+      "node": "userdata |tsnode|",
+      "source": "(number|string) Buffer or string from which the {node} is\n              extracted",
+      "opts": "(table|nil) Optional parameters.\n              • concat: (boolean) Concatenate result in a string (default\n                true)"
+    },
+    "doc": ["Gets the text corresponding to a given node"],
+    "return": ["(string[]|string)"],
+    "seealso": []
+  },
+  "get_parser": {
+    "annotations": [],
+    "signature": "get_parser({bufnr}, {lang}, {opts})",
+    "parameters": [
+      ["", "bufnr"],
+      ["", "lang"],
+      ["", "opts"]
+    ],
+    "parameters_doc": {
+      "bufnr": "(number|nil) Buffer the parser should be tied to (default:\n             current buffer)",
+      "lang": "(string|nil) Filetype of this parser (default: buffer\n             filetype)",
+      "opts": "(table|nil) Options to pass to the created language tree"
+    },
+    "doc": [
+      "Returns the parser for a specific buffer and filetype and attaches it to\nthe buffer",
+      "If needed, this will create the parser."
+    ],
+    "return": ["LanguageTree |LanguageTree| object to use for parsing"],
+    "seealso": []
+  },
+  "get_query": {
+    "annotations": [],
+    "signature": "get_query({lang}, {query_name})",
+    "parameters": [
+      ["", "lang"],
+      ["", "query_name"]
+    ],
+    "parameters_doc": {
+      "lang": "(string) Language to use for the query",
+      "query_name": "(string) Name of the query (e.g. 'highlights')"
+    },
+    "doc": ["Returns the runtime query {query_name} for {lang}."],
+    "return": ["Query Parsed query"],
+    "seealso": []
+  },
+  "get_query_files": {
+    "annotations": [],
+    "signature": "get_query_files({lang}, {query_name}, {is_included})",
+    "parameters": [
+      ["", "lang"],
+      ["", "query_name"],
+      ["", "is_included"]
+    ],
+    "parameters_doc": {
+      "lang": "(string) Language to get query for",
+      "query_name": "(string) Name of the query to load (e.g., 'highlights')",
+      "is_included": "(boolean|nil) Internal parameter, most of the time left\n                   as `nil`"
+    },
+    "doc": ["Gets the list of files used to make up a query"],
+    "return": [
+      "string[] query_files List of files to load for given query and\n    language"
+    ],
+    "seealso": []
+  },
+  "get_string_parser": {
+    "annotations": [],
+    "signature": "get_string_parser({str}, {lang}, {opts})",
+    "parameters": [
+      ["", "str"],
+      ["", "lang"],
+      ["", "opts"]
+    ],
+    "parameters_doc": {
+      "str": "(string) Text to parse",
+      "lang": "(string) Language of this string",
+      "opts": "(table|nil) Options to pass to the created language tree"
+    },
+    "doc": ["Returns a string parser"],
+    "return": ["LanguageTree |LanguageTree| object to use for parsing"],
+    "seealso": []
+  },
+  "inspect_language": {
+    "annotations": [],
+    "signature": "inspect_language({lang})",
+    "parameters": [["", "lang"]],
+    "parameters_doc": { "lang": "(string) Language" },
+    "doc": [
+      "Inspects the provided language.",
+      "Inspecting provides some useful information on the language like node\nnames, ..."
+    ],
+    "return": ["(table)"],
+    "seealso": []
+  },
+  "is_ancestor": {
+    "annotations": [],
+    "signature": "is_ancestor({dest}, {source})",
+    "parameters": [
+      ["", "dest"],
+      ["", "source"]
+    ],
+    "parameters_doc": {
+      "dest": "userdata Possible ancestor |tsnode|",
+      "source": "userdata Possible descendant |tsnode|"
+    },
+    "doc": ["Determines whether a node is the ancestor of another"],
+    "return": ["(boolean) True if {dest} is an ancestor of {source}"],
+    "seealso": []
+  },
+  "is_in_node_range": {
+    "annotations": [],
+    "signature": "is_in_node_range({node}, {line}, {col})",
+    "parameters": [
+      ["", "node"],
+      ["", "line"],
+      ["", "col"]
+    ],
+    "parameters_doc": {
+      "node": "userdata |tsnode| defining the range",
+      "line": "(number) Line (0-based)",
+      "col": "(number) Column (0-based)"
+    },
+    "doc": ["Determines whether (line, col) position is in node range"],
+    "return": ["(boolean) True if the position is in node range"],
+    "seealso": []
+  },
+  "list_directives": {
+    "annotations": [],
+    "signature": "list_directives()",
+    "parameters": [],
+    "parameters_doc": {},
+    "doc": ["Lists the currently available directives to use in queries."],
+    "return": ["string[] List of supported directives."],
+    "seealso": []
+  },
+  "list_predicates": {
+    "annotations": [],
+    "signature": "list_predicates()",
+    "parameters": [],
+    "parameters_doc": {},
+    "doc": ["Lists the currently available predicates to use in queries."],
+    "return": ["string[] List of supported predicates."],
+    "seealso": []
+  },
+  "new": {
+    "annotations": [],
+    "signature": "new({source}, {lang}, {opts})",
+    "parameters": [
+      ["", "source"],
+      ["", "lang"],
+      ["", "opts"]
+    ],
+    "parameters_doc": {
+      "source": "(number|string) Buffer or a string of text to parse",
+      "lang": "(string) Root language this tree represents",
+      "opts": "(table|nil) Optional keyword arguments:\n              • injections table Mapping language to injection query\n                strings. This is useful for overriding the built-in\n                runtime file searching for the injection language query\n                per language."
+    },
+    "doc": [
+      "A |LanguageTree| holds the treesitter parser for a given language {lang}\nused to parse a buffer. As the buffer may contain injected languages, the LanguageTree needs to store parsers for these child languages as well (which in turn\nmay contain child languages themselves, hence the name)."
+    ],
+    "return": ["LanguageTree |LanguageTree| parser object"],
+    "seealso": []
+  },
+  "node_contains": {
+    "annotations": [],
+    "signature": "node_contains({node}, {range})",
+    "parameters": [
+      ["", "node"],
+      ["", "range"]
+    ],
+    "parameters_doc": { "node": "userdata |tsnode|", "range": "(table)" },
+    "doc": ["Determines if a node contains a range"],
+    "return": ["(boolean) True if the {node} contains the {range}"],
+    "seealso": []
+  },
+  "parse_query": {
+    "annotations": [],
+    "signature": "parse_query({lang}, {query})",
+    "parameters": [
+      ["", "lang"],
+      ["", "query"]
+    ],
+    "parameters_doc": {
+      "lang": "(string) Language to use for the query",
+      "query": "(string) Query in s-expr syntax"
+    },
+    "doc": [
+      "Parse {query} as a string. (If the query is in a file, the caller should\nread the contents into a string before calling).",
+      "Returns a `Query` (see |lua-treesitter-query|) object which can be used to search nodes in\nthe syntax tree for the patterns defined in {query} using `iter_*` methods below.",
+      "Exposes `info` and `captures` with additional context about {query}.\n• `captures` contains the list of unique capture names defined in {query}.\n  -`info.captures` also points to `captures`.\n• `info.patterns` contains information about predicates.\n"
+    ],
+    "return": ["Query Parsed query"],
+    "seealso": []
+  },
+  "require_language": {
+    "annotations": [],
+    "signature": "require_language({lang}, {path}, {silent}, {symbol_name})",
+    "parameters": [
+      ["", "lang"],
+      ["", "path"],
+      ["", "silent"],
+      ["", "symbol_name"]
+    ],
+    "parameters_doc": {
+      "lang": "(string) Language the parser should parse",
+      "path": "(string|nil) Optional path the parser is located at",
+      "silent": "(boolean|nil) Don't throw an error if language not\n                   found",
+      "symbol_name": "(string|nil) Internal symbol name for the language to\n                   load"
+    },
+    "doc": [
+      "Asserts that a parser for the language {lang} is installed.",
+      "Parsers are searched in the `parser` runtime directory, or the provided\n{path}"
+    ],
+    "return": ["(boolean) If the specified language is installed"],
+    "seealso": []
+  },
+  "set_query": {
+    "annotations": [],
+    "signature": "set_query({lang}, {query_name}, {text})",
+    "parameters": [
+      ["", "lang"],
+      ["", "query_name"],
+      ["", "text"]
+    ],
+    "parameters_doc": {
+      "lang": "(string) Language to use for the query",
+      "query_name": "(string) Name of the query (e.g., 'highlights')",
+      "text": "(string) Query text (unparsed)."
+    },
+    "doc": [
+      "Sets the runtime query named {query_name} for {lang}",
+      "This allows users to override any runtime files and/or configuration set\nby plugins."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "start": {
+    "annotations": [],
+    "signature": "start({bufnr}, {lang})",
+    "parameters": [
+      ["", "bufnr"],
+      ["", "lang"]
+    ],
+    "parameters_doc": {
+      "bufnr": "(number|nil) Buffer to be highlighted (default: current\n             buffer)",
+      "lang": "(string|nil) Language of the parser (default: buffer\n             filetype)"
+    },
+    "doc": [
+      "Starts treesitter highlighting for a buffer",
+      "Can be used in an ftplugin or FileType autocommand.",
+      "Note: By default, disables regex syntax highlighting, which may be\nrequired for some plugins. In this case, add `vim.bo.syntax = 'on'` after\nthe call to `start`.",
+      "Example: >\n\n vim.api.nvim_create_autocmd( 'FileType', { pattern = 'tex',\n     callback = function(args)\n         vim.treesitter.start(args.buf, 'latex')\n         vim.bo[args.buf].syntax = 'on'  -- only if additional legacy syntax is needed\n     end\n })\n \n<"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "stop": {
+    "annotations": [],
+    "signature": "stop({bufnr})",
+    "parameters": [["", "bufnr"]],
+    "parameters_doc": {
+      "bufnr": "(number|nil) Buffer to stop highlighting (default: current\n             buffer)"
+    },
+    "doc": ["Stops treesitter highlighting for a buffer"],
+    "return": [],
+    "seealso": []
+  }
+}

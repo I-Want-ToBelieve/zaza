@@ -1,0 +1,21 @@
+{
+  // @see https://typescripttolua.github.io/docs/configuration
+  "extends": "../../tsconfig-common.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "types": ["lua-types/jit", "@typescript-to-lua/language-extensions", "@zaza/types"],
+    "typeRoots": ["./types"]
+  },
+  "include": ["./", "../types/neovim/neovim.d.ts"],
+  "tstl": {
+    // @see https://github.com/neovim/neovim/blob/4c499899b2c3b31d57c1911c522683bdb2e32a0a/runtime/doc/lua.txt#L257
+    "luaTarget": "JIT",
+    "noImplicitSelf": true,
+    "sourceMapTraceback": false,
+    "buildMode": "default",
+    "tstlVerbose": true
+  }
+}

@@ -1,0 +1,22 @@
+diff --git a/dist/transpilation/resolve.js b/dist/transpilation/resolve.js
+index 5a0366f3b4943578f7e52c170573e1f50b7fc3f8..b94af99aaee2211cbd205756b7396e48c0902262 100644
+--- a/dist/transpilation/resolve.js
++++ b/dist/transpilation/resolve.js
+@@ -26,7 +26,7 @@ class ResolutionContext {
+         this.processedDependencies = new Set();
+         // value is false if already searched but not found
+         this.pathToFile = new Map();
+-        this.noResolvePaths = new Set(options.noResolvePaths);
++        this.noResolvePaths = Array.from(new Set(options.noResolvePaths), (it) => new RegExp(it));
+     }
+     addAndResolveDependencies(file) {
+         if (this.resolvedFiles.has(file.fileName))
+@@ -54,7 +54,7 @@ class ResolutionContext {
+             this.resolvedFiles.set("lualib_bundle", { fileName: "lualib_bundle", code: "" });
+             return;
+         }
+-        if (this.noResolvePaths.has(required)) {
++        if (this.noResolvePaths.some((it) => it.test(required))) {
+             if (this.options.tstlVerbose) {
+                 console.log(`Skipping module resolution of ${required} as it is in the tsconfig noResolvePaths.`);
+             }

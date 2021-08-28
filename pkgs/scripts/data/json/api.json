@@ -1,0 +1,2860 @@
+{
+  "nvim__buf_redraw_range": {
+    "annotations": [],
+    "signature": "nvim__buf_redraw_range({buffer}, {first}, {last}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "first"],
+      ["Integer", "last"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim__buf_stats": {
+    "annotations": [],
+    "signature": "nvim__buf_stats({buffer}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim__get_hl_defs": {
+    "annotations": [],
+    "signature": "nvim__get_hl_defs({ns_id}, {arena}, {err})",
+    "parameters": [
+      ["Integer", "ns_id"],
+      ["Arena *", "arena"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim__get_lib_dir": {
+    "annotations": [],
+    "signature": "nvim__get_lib_dir()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim__get_runtime": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim__get_runtime({pat}, {all}, {opts}, {err})",
+    "parameters": [
+      ["Array", "pat"],
+      ["Boolean", "all"],
+      ["Dict(runtime) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "pat": "pattern of files to search for",
+      "all": "whether to return all matches or only the first",
+      "opts": "is_lua: only search lua subdirs"
+    },
+    "doc": ["Find files in runtime directories"],
+    "return": ["list of absolute paths to the found files"],
+    "seealso": []
+  },
+  "nvim__id": {
+    "annotations": [],
+    "signature": "nvim__id({obj})",
+    "parameters": [["Object", "obj"]],
+    "parameters_doc": { "obj": "Object to return." },
+    "doc": [
+      "Returns object given as argument.",
+      "This API function is used for testing. One should not rely on its presence\nin plugins."
+    ],
+    "return": ["its argument."],
+    "seealso": []
+  },
+  "nvim__id_array": {
+    "annotations": [],
+    "signature": "nvim__id_array({arr})",
+    "parameters": [["Array", "arr"]],
+    "parameters_doc": { "arr": "Array to return." },
+    "doc": [
+      "Returns array given as argument.",
+      "This API function is used for testing. One should not rely on its presence\nin plugins."
+    ],
+    "return": ["its argument."],
+    "seealso": []
+  },
+  "nvim__id_dictionary": {
+    "annotations": [],
+    "signature": "nvim__id_dictionary({dct})",
+    "parameters": [["Dictionary", "dct"]],
+    "parameters_doc": { "dct": "Dictionary to return." },
+    "doc": [
+      "Returns dictionary given as argument.",
+      "This API function is used for testing. One should not rely on its presence\nin plugins."
+    ],
+    "return": ["its argument."],
+    "seealso": []
+  },
+  "nvim__id_float": {
+    "annotations": [],
+    "signature": "nvim__id_float({flt})",
+    "parameters": [["Float", "flt"]],
+    "parameters_doc": { "flt": "Value to return." },
+    "doc": [
+      "Returns floating-point value given as argument.",
+      "This API function is used for testing. One should not rely on its presence\nin plugins."
+    ],
+    "return": ["its argument."],
+    "seealso": []
+  },
+  "nvim__inspect_cell": {
+    "annotations": [],
+    "signature": "nvim__inspect_cell({grid}, {row}, {col}, {arena}, {err})",
+    "parameters": [
+      ["Integer", "grid"],
+      ["Integer", "row"],
+      ["Integer", "col"],
+      ["Arena *", "arena"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim__runtime_inspect": {
+    "annotations": [],
+    "signature": "nvim__runtime_inspect()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim__screenshot": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim__screenshot({path})",
+    "parameters": [["String", "path"]],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim__stats": {
+    "annotations": [],
+    "signature": "nvim__stats()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets internal stats."],
+    "return": ["Map of various internal stats."],
+    "seealso": []
+  },
+  "nvim__unpack": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim__unpack({str}, {err})",
+    "parameters": [
+      ["String", "str"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_add_highlight": {
+    "annotations": [],
+    "signature": "nvim_buf_add_highlight({buffer}, {ns_id}, {hl_group}, {line}, {col_start}, {col_end}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "ns_id"],
+      ["String", "hl_group"],
+      ["Integer", "line"],
+      ["Integer", "col_start"],
+      ["Integer", "col_end"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "ns_id": "namespace to use or -1 for ungrouped highlight",
+      "hl_group": "Name of the highlight group to use",
+      "line": "Line to highlight (zero-indexed)",
+      "col_start": "Start of (byte-indexed) column range to highlight",
+      "col_end": "End of (byte-indexed) column range to highlight, or -1 to\n                 highlight to end of line"
+    },
+    "doc": [
+      "Adds a highlight to buffer.",
+      "Useful for plugins that dynamically generate highlights to a buffer (like\na semantic highlighter or linter). The function adds a single highlight to\na buffer. Unlike |matchaddpos()| highlights follow changes to line\nnumbering (as lines are inserted/removed above the highlighted line), like\nsigns and marks do.",
+      "Namespaces are used for batch deletion/updating of a set of highlights. To\ncreate a namespace, use |nvim_create_namespace()| which returns a\nnamespace id. Pass it in to this function as `ns_id` to add highlights to\nthe namespace. All highlights in the same namespace can then be cleared\nwith single call to |nvim_buf_clear_namespace()|. If the highlight never\nwill be deleted by an API call, pass `ns_id = -1`.",
+      "As a shorthand, `ns_id = 0` can be used to create a new namespace for the\nhighlight, the allocated id is then returned. If `hl_group` is the empty\nstring no highlight is added, but a new `ns_id` is still returned. This is\nsupported for backwards compatibility, new code should use\n|nvim_create_namespace()| to create a new empty namespace."
+    ],
+    "return": ["The ns_id that was used"],
+    "seealso": []
+  },
+  "nvim_buf_attach": {
+    "annotations": [],
+    "signature": "nvim_buf_attach({buffer}, {send_buffer}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Boolean", "send_buffer"],
+      ["DictionaryOf(LuaRef)", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "send_buffer": "True if the initial notification should contain the\n                   whole buffer: first notification will be\n                   `nvim_buf_lines_event`. Else the first notification\n                   will be `nvim_buf_changedtick_event`. Not for Lua\n                   callbacks.",
+      "opts": "Optional parameters.\n                   • on_lines: Lua callback invoked on change. Return `true` to detach. Args:\n                     • the string \"lines\"\n                     • buffer handle\n                     • b:changedtick\n                     • first line that changed (zero-indexed)\n                     • last line that was changed\n                     • last line in the updated range\n                     • byte count of previous contents\n                     • deleted_codepoints (if `utf_sizes` is true)\n                     • deleted_codeunits (if `utf_sizes` is true)\n\n                   • on_bytes: lua callback invoked on change. This\n                     callback receives more granular information about the\n                     change compared to on_lines. Return `true` to detach. Args:\n                     • the string \"bytes\"\n                     • buffer handle\n                     • b:changedtick\n                     • start row of the changed text (zero-indexed)\n                     • start column of the changed text\n                     • byte offset of the changed text (from the start of\n                       the buffer)\n                     • old end row of the changed text\n                     • old end column of the changed text\n                     • old end byte length of the changed text\n                     • new end row of the changed text\n                     • new end column of the changed text\n                     • new end byte length of the changed text\n\n                   • on_changedtick: Lua callback invoked on changedtick\n                     increment without text change. Args:\n                     • the string \"changedtick\"\n                     • buffer handle\n                     • b:changedtick\n\n                   • on_detach: Lua callback invoked on detach. Args:\n                     • the string \"detach\"\n                     • buffer handle\n\n                   • on_reload: Lua callback invoked on reload. The entire\n                     buffer content should be considered changed. Args:\n                     • the string \"reload\"\n                     • buffer handle\n\n                   • utf_sizes: include UTF-32 and UTF-16 size of the\n                     replaced region, as args to `on_lines`.\n                   • preview: also attach to command preview (i.e.\n                     'inccommand') events."
+    },
+    "doc": [
+      "Activates buffer-update events on a channel, or as Lua callbacks.",
+      "Example (Lua): capture buffer updates in a global `events` variable (use \"print(vim.inspect(events))\" to see its contents): >\n  events = {}\n  vim.api.nvim_buf_attach(0, false, {\n    on_lines=function(...) table.insert(events, {...}) end})\n\n<"
+    ],
+    "return": [
+      "False if attach failed (invalid parameter, or buffer isn't loaded);\n    otherwise True. TODO: LUA_API_NO_EVAL"
+    ],
+    "seealso": ["|nvim_buf_detach()|", "|api-buffer-updates-lua|"]
+  },
+  "nvim_buf_call": {
+    "annotations": ["|vim.api| only"],
+    "signature": "nvim_buf_call({buffer}, {fun}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["LuaRef", "fun"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "fun": "Function to call inside the buffer (currently lua callable\n              only)"
+    },
+    "doc": [
+      "call a function with buffer as temporary current buffer",
+      "This temporarily switches current buffer to \"buffer\". If the current\nwindow already shows \"buffer\", the window is not switched If a window\ninside the current tabpage (including a float) already shows the buffer\nOne of these windows will be set as current window temporarily. Otherwise\na temporary scratch window (called the \"autocmd window\" for historical\nreasons) will be used.",
+      "This is useful e.g. to call vimL functions that only work with the current\nbuffer/window currently, like |termopen()|."
+    ],
+    "return": [
+      "Return value of function. NB: will deepcopy lua values currently, use\n    upvalues to send lua references in and out."
+    ],
+    "seealso": []
+  },
+  "nvim_buf_clear_namespace": {
+    "annotations": [],
+    "signature": "nvim_buf_clear_namespace({buffer}, {ns_id}, {line_start}, {line_end}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "ns_id"],
+      ["Integer", "line_start"],
+      ["Integer", "line_end"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "ns_id": "Namespace to clear, or -1 to clear all namespaces.",
+      "line_start": "Start of range of lines to clear",
+      "line_end": "End of range of lines to clear (exclusive) or -1 to\n                  clear to end of buffer."
+    },
+    "doc": [
+      "Clears namespaced objects (highlights, extmarks, virtual text) from a\nregion.",
+      "Lines are 0-indexed. |api-indexing| To clear the namespace in the entire\nbuffer, specify line_start=0 and line_end=-1."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_create_user_command": {
+    "annotations": [],
+    "signature": "nvim_buf_create_user_command({buffer}, {name}, {command}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Object", "command"],
+      ["Dict(user_command) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer." },
+    "doc": ["Create a new user command |user-commands| in the given buffer."],
+    "return": [],
+    "seealso": ["nvim_create_user_command"]
+  },
+  "nvim_buf_del_extmark": {
+    "annotations": [],
+    "signature": "nvim_buf_del_extmark({buffer}, {ns_id}, {id}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "ns_id"],
+      ["Integer", "id"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "ns_id": "Namespace id from |nvim_create_namespace()|",
+      "id": "Extmark id"
+    },
+    "doc": ["Removes an extmark."],
+    "return": ["true if the extmark was found, else false"],
+    "seealso": []
+  },
+  "nvim_buf_del_keymap": {
+    "annotations": [],
+    "signature": "nvim_buf_del_keymap({buffer}, {mode}, {lhs}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "mode"],
+      ["String", "lhs"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": ["Unmaps a buffer-local |mapping| for the given mode."],
+    "return": [],
+    "seealso": ["|nvim_del_keymap()|"]
+  },
+  "nvim_buf_del_mark": {
+    "annotations": [],
+    "signature": "nvim_buf_del_mark({buffer}, {name}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer to set the mark on", "name": "Mark name" },
+    "doc": [
+      "Deletes a named mark in the buffer. See |mark-motions|.",
+      "\nNote:\n    only deletes marks set in the buffer, if the mark is not set in the\n    buffer it will return false.\n"
+    ],
+    "return": ["true if the mark was deleted, else false."],
+    "seealso": ["|nvim_buf_set_mark()|", "|nvim_del_mark()|"]
+  },
+  "nvim_buf_del_user_command": {
+    "annotations": [],
+    "signature": "nvim_buf_del_user_command({buffer}, {name}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer.",
+      "name": "Name of the command to delete."
+    },
+    "doc": [
+      "Delete a buffer-local user-defined command.",
+      "Only commands created with |:command-buffer| or\n|nvim_buf_create_user_command()| can be deleted with this function."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_del_var": {
+    "annotations": [],
+    "signature": "nvim_buf_del_var({buffer}, {name}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "name": "Variable name"
+    },
+    "doc": ["Removes a buffer-scoped (b:) variable"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_delete": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_buf_delete({buffer}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "opts": "Optional parameters. Keys:\n              • force: Force deletion and ignore unsaved changes.\n              • unload: Unloaded only, do not delete. See |:bunload|"
+    },
+    "doc": ["Deletes the buffer. See |:bwipeout|"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_detach": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_buf_detach({buffer}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": ["Deactivates buffer-update events on the channel."],
+    "return": [
+      "False if detach failed (because the buffer isn't loaded); otherwise\n    True."
+    ],
+    "seealso": ["|nvim_buf_attach()|", "|api-lua-detach| for detaching Lua callbacks"]
+  },
+  "nvim_buf_get_changedtick": {
+    "annotations": [],
+    "signature": "nvim_buf_get_changedtick({buffer}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": ["Gets a changed tick of a buffer"],
+    "return": ["`b:changedtick` value."],
+    "seealso": []
+  },
+  "nvim_buf_get_commands": {
+    "annotations": [],
+    "signature": "nvim_buf_get_commands({buffer}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Dict(get_commands) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "opts": "Optional parameters. Currently not used."
+    },
+    "doc": ["Gets a map of buffer-local |user-commands|."],
+    "return": ["Map of maps describing commands."],
+    "seealso": []
+  },
+  "nvim_buf_get_extmark_by_id": {
+    "annotations": [],
+    "signature": "nvim_buf_get_extmark_by_id({buffer}, {ns_id}, {id}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "ns_id"],
+      ["Integer", "id"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "ns_id": "Namespace id from |nvim_create_namespace()|",
+      "id": "Extmark id",
+      "opts": "Optional parameters. Keys:\n              • details: Whether to include the details dict"
+    },
+    "doc": ["Gets the position (0-indexed) of an extmark."],
+    "return": ["0-indexed (row, col) tuple or empty list () if extmark id was absent"],
+    "seealso": []
+  },
+  "nvim_buf_get_extmarks": {
+    "annotations": [],
+    "signature": "nvim_buf_get_extmarks({buffer}, {ns_id}, {start}, {end}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "ns_id"],
+      ["Object", "start"],
+      ["Object", "end"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "ns_id": "Namespace id from |nvim_create_namespace()|",
+      "start": "Start of range: a 0-indexed (row, col) or valid extmark id\n              (whose position defines the bound). |api-indexing|",
+      "end": "End of range (inclusive): a 0-indexed (row, col) or valid\n              extmark id (whose position defines the bound).\n              |api-indexing|",
+      "opts": "Optional parameters. Keys:\n              • limit: Maximum number of marks to return\n              • details Whether to include the details dict"
+    },
+    "doc": [
+      "Gets extmarks in \"traversal order\" from a |charwise| region defined by\nbuffer positions (inclusive, 0-indexed |api-indexing|).",
+      "Region can be given as (row,col) tuples, or valid extmark ids (whose\npositions define the bounds). 0 and -1 are understood as (0,0) and (-1,-1)\nrespectively, thus the following are equivalent:",
+      ">\n  nvim_buf_get_extmarks(0, my_ns, 0, -1, {})\n  nvim_buf_get_extmarks(0, my_ns, [0,0], [-1,-1], {})\n\n<",
+      "If `end` is less than `start`, traversal works backwards. (Useful with\n`limit`, to get the first marks prior to a given position.)",
+      "Example:",
+      ">\n  local a   = vim.api\n  local pos = a.nvim_win_get_cursor(0)\n  local ns  = a.nvim_create_namespace('my-plugin')\n  -- Create new extmark at line 1, column 1.\n  local m1  = a.nvim_buf_set_extmark(0, ns, 0, 0, {})\n  -- Create new extmark at line 3, column 1.\n  local m2  = a.nvim_buf_set_extmark(0, ns, 0, 2, {})\n  -- Get extmarks only from line 3.\n  local ms  = a.nvim_buf_get_extmarks(0, ns, {2,0}, {2,0}, {})\n  -- Get all marks in this buffer + namespace.\n  local all = a.nvim_buf_get_extmarks(0, ns, 0, -1, {})\n  print(vim.inspect(ms))\n\n<"
+    ],
+    "return": ["List of [extmark_id, row, col] tuples in \"traversal order\"."],
+    "seealso": []
+  },
+  "nvim_buf_get_keymap": {
+    "annotations": [],
+    "signature": "nvim_buf_get_keymap({buffer}, {mode}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "mode"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "mode": "Mode short-name (\"n\", \"i\", \"v\", ...)",
+      "buffer": "Buffer handle, or 0 for current buffer"
+    },
+    "doc": ["Gets a list of buffer-local |mapping| definitions."],
+    "return": [
+      "Array of |maparg()|-like dictionaries describing mappings. The\n    \"buffer\" key holds the associated buffer handle."
+    ],
+    "seealso": []
+  },
+  "nvim_buf_get_lines": {
+    "annotations": [],
+    "signature": "nvim_buf_get_lines({buffer}, {start}, {end}, {strict_indexing}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "start"],
+      ["Integer", "end"],
+      ["Boolean", "strict_indexing"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "start": "First line index",
+      "end": "Last line index, exclusive",
+      "strict_indexing": "Whether out-of-bounds should be an error."
+    },
+    "doc": [
+      "Gets a line-range from the buffer.",
+      "Indexing is zero-based, end-exclusive. Negative indices are interpreted as\nlength+1+index: -1 refers to the index past the end. So to get the last\nelement use start=-2 and end=-1.",
+      "Out-of-bounds indices are clamped to the nearest valid value, unless\n`strict_indexing` is set."
+    ],
+    "return": ["Array of lines, or empty array for unloaded buffer."],
+    "seealso": []
+  },
+  "nvim_buf_get_mark": {
+    "annotations": [],
+    "signature": "nvim_buf_get_mark({buffer}, {name}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "name": "Mark name"
+    },
+    "doc": [
+      "Returns a tuple (row,col) representing the position of the named mark. See\n|mark-motions|.",
+      "Marks are (1,0)-indexed. |api-indexing|"
+    ],
+    "return": [
+      "(row, col) tuple, (0, 0) if the mark is not set, or is an\n    uppercase/file mark set in another buffer."
+    ],
+    "seealso": ["|nvim_buf_set_mark()|", "|nvim_buf_del_mark()|"]
+  },
+  "nvim_buf_get_name": {
+    "annotations": [],
+    "signature": "nvim_buf_get_name({buffer}, {arena}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Arena *", "arena"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": ["Gets the full file name for the buffer"],
+    "return": ["Buffer name"],
+    "seealso": []
+  },
+  "nvim_buf_get_offset": {
+    "annotations": [],
+    "signature": "nvim_buf_get_offset({buffer}, {index}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "index"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "index": "Line index"
+    },
+    "doc": [
+      "Returns the byte offset of a line (0-indexed). |api-indexing|",
+      "Line 1 (index=0) has offset 0. UTF-8 bytes are counted. EOL is one byte.\n'fileformat' and 'fileencoding' are ignored. The line index just after the\nlast line gives the total byte-count of the buffer. A final EOL byte is\ncounted if it would be written, see 'eol'.",
+      "Unlike |line2byte()|, throws error for out-of-bounds indexing. Returns -1\nfor unloaded buffer."
+    ],
+    "return": ["Integer byte offset, or -1 for unloaded buffer."],
+    "seealso": []
+  },
+  "nvim_buf_get_option": {
+    "annotations": [],
+    "signature": "nvim_buf_get_option({buffer}, {name}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "name": "Option name"
+    },
+    "doc": ["Gets a buffer option value"],
+    "return": ["Option value"],
+    "seealso": []
+  },
+  "nvim_buf_get_text": {
+    "annotations": [],
+    "signature": "nvim_buf_get_text({buffer}, {start_row}, {start_col}, {end_row}, {end_col}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "start_row"],
+      ["Integer", "start_col"],
+      ["Integer", "end_row"],
+      ["Integer", "end_col"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "start_row": "First line index",
+      "start_col": "Starting column (byte offset) on first line",
+      "end_row": "Last line index, inclusive",
+      "end_col": "Ending column (byte offset) on last line, exclusive",
+      "opts": "Optional parameters. Currently unused."
+    },
+    "doc": [
+      "Gets a range from the buffer.",
+      "This differs from |nvim_buf_get_lines()| in that it allows retrieving only\nportions of a line.",
+      "Indexing is zero-based. Row indices are end-inclusive, and column indices\nare end-exclusive.",
+      "Prefer |nvim_buf_get_lines()| when retrieving entire lines."
+    ],
+    "return": ["Array of lines, or empty array for unloaded buffer."],
+    "seealso": []
+  },
+  "nvim_buf_get_var": {
+    "annotations": [],
+    "signature": "nvim_buf_get_var({buffer}, {name}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "name": "Variable name"
+    },
+    "doc": ["Gets a buffer-scoped (b:) variable."],
+    "return": ["Variable value"],
+    "seealso": []
+  },
+  "nvim_buf_is_loaded": {
+    "annotations": [],
+    "signature": "nvim_buf_is_loaded({buffer})",
+    "parameters": [["Buffer", "buffer"]],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": [
+      "Checks if a buffer is valid and loaded. See |api-buffer| for more info\nabout unloaded buffers."
+    ],
+    "return": ["true if the buffer is valid and loaded, false otherwise."],
+    "seealso": []
+  },
+  "nvim_buf_is_valid": {
+    "annotations": [],
+    "signature": "nvim_buf_is_valid({buffer})",
+    "parameters": [["Buffer", "buffer"]],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": [
+      "Checks if a buffer is valid.",
+      "\nNote:\n    Even if a buffer is valid it may have been unloaded. See |api-buffer|\n    for more info about unloaded buffers.\n"
+    ],
+    "return": ["true if the buffer is valid, false otherwise."],
+    "seealso": []
+  },
+  "nvim_buf_line_count": {
+    "annotations": [],
+    "signature": "nvim_buf_line_count({buffer}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": ["Returns the number of lines in the given buffer."],
+    "return": ["Line count, or 0 for unloaded buffer. |api-buffer|"],
+    "seealso": []
+  },
+  "nvim_buf_set_extmark": {
+    "annotations": [],
+    "signature": "nvim_buf_set_extmark({buffer}, {ns_id}, {line}, {col}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "ns_id"],
+      ["Integer", "line"],
+      ["Integer", "col"],
+      ["Dict(set_extmark) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "ns_id": "Namespace id from |nvim_create_namespace()|",
+      "line": "Line where to place the mark, 0-based. |api-indexing|",
+      "col": "Column where to place the mark, 0-based. |api-indexing|",
+      "opts": "Optional parameters.\n              • id : id of the extmark to edit.\n              • end_row : ending line of the mark, 0-based inclusive.\n              • end_col : ending col of the mark, 0-based exclusive.\n              • hl_group : name of the highlight group used to highlight\n                this mark.\n              • hl_eol : when true, for a multiline highlight covering the\n                EOL of a line, continue the highlight for the rest of the\n                screen line (just like for diff and cursorline highlight).\n              • virt_text : virtual text to link to this mark. A list of\n                [text, highlight] tuples, each representing a text chunk\n                with specified highlight. `highlight` element can either\n                be a a single highlight group, or an array of multiple\n                highlight groups that will be stacked (highest priority\n                last). A highlight group can be supplied either as a\n                string or as an integer, the latter which can be obtained\n                using |nvim_get_hl_id_by_name|.\n              • virt_text_pos : position of virtual text. Possible values:\n                • \"eol\": right after eol character (default)\n                • \"overlay\": display over the specified column, without\n                  shifting the underlying text.\n                • \"right_align\": display right aligned in the window.\n\n              • virt_text_win_col : position the virtual text at a fixed\n                window column (starting from the first text column)\n              • virt_text_hide : hide the virtual text when the background\n                text is selected or hidden due to horizontal scroll\n                'nowrap'\n              • hl_mode : control how highlights are combined with the\n                highlights of the text. Currently only affects virt_text\n                highlights, but might affect `hl_group` in later versions.\n                • \"replace\": only show the virt_text color. This is the\n                  default\n                • \"combine\": combine with background text color\n                • \"blend\": blend with background text color.\n\n              • virt_lines : virtual lines to add next to this mark This\n                should be an array over lines, where each line in turn is\n                an array over [text, highlight] tuples. In general, buffer\n                and window options do not affect the display of the text.\n                In particular 'wrap' and 'linebreak' options do not take\n                effect, so the number of extra screen lines will always\n                match the size of the array. However the 'tabstop' buffer\n                option is still used for hard tabs. By default lines are\n                placed below the buffer line containing the mark.\n              • virt_lines_above: place virtual lines above instead.\n              • virt_lines_leftcol: Place extmarks in the leftmost column\n                of the window, bypassing sign and number columns.\n              • ephemeral : for use with |nvim_set_decoration_provider|\n                callbacks. The mark will only be used for the current\n                redraw cycle, and not be permantently stored in the\n                buffer.\n              • right_gravity : boolean that indicates the direction the\n                extmark will be shifted in when new text is inserted (true\n                for right, false for left). defaults to true.\n              • end_right_gravity : boolean that indicates the direction\n                the extmark end position (if it exists) will be shifted in\n                when new text is inserted (true for right, false for\n                left). Defaults to false.\n              • priority: a priority value for the highlight group or sign\n                attribute. For example treesitter highlighting uses a\n                value of 100.\n              • strict: boolean that indicates extmark should not be\n                placed if the line or column value is past the end of the\n                buffer or end of the line respectively. Defaults to true.\n              • sign_text: string of length 1-2 used to display in the\n                sign column. Note: ranges are unsupported and decorations\n                are only applied to start_row\n              • sign_hl_group: name of the highlight group used to\n                highlight the sign column text. Note: ranges are\n                unsupported and decorations are only applied to start_row\n              • number_hl_group: name of the highlight group used to\n                highlight the number column. Note: ranges are unsupported\n                and decorations are only applied to start_row\n              • line_hl_group: name of the highlight group used to\n                highlight the whole line. Note: ranges are unsupported and\n                decorations are only applied to start_row\n              • cursorline_hl_group: name of the highlight group used to\n                highlight the line when the cursor is on the same line as\n                the mark and 'cursorline' is enabled. Note: ranges are\n                unsupported and decorations are only applied to start_row\n              • conceal: string which should be either empty or a single\n                character. Enable concealing similar to |:syn-conceal|.\n                When a character is supplied it is used as |:syn-cchar|.\n                \"hl_group\" is used as highlight for the cchar if provided,\n                otherwise it defaults to |hl-Conceal|.\n              • spell: boolean indicating that spell checking should be\n                performed within this extmark\n              • ui_watched: boolean that indicates the mark should be\n                drawn by a UI. When set, the UI will receive win_extmark\n                events. Note: the mark is positioned by virt_text\n                attributes. Can be used together with virt_text."
+    },
+    "doc": [
+      "Creates or updates an extmark.",
+      "By default a new extmark is created when no id is passed in, but it is\nalso possible to create a new mark by passing in a previously unused id or\nmove an existing mark by passing in its id. The caller must then keep\ntrack of existing and unused ids itself. (Useful over RPC, to avoid\nwaiting for the return value.)",
+      "Using the optional arguments, it is possible to use this to highlight a\nrange of text, and also to associate virtual text to the mark."
+    ],
+    "return": ["Id of the created/updated extmark"],
+    "seealso": []
+  },
+  "nvim_buf_set_keymap": {
+    "annotations": [],
+    "signature": "nvim_buf_set_keymap({buffer}, {mode}, {lhs}, {rhs}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "mode"],
+      ["String", "lhs"],
+      ["String", "rhs"],
+      ["Dict(keymap) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle, or 0 for current buffer" },
+    "doc": ["Sets a buffer-local |mapping| for the given mode."],
+    "return": [],
+    "seealso": ["|nvim_set_keymap()|"]
+  },
+  "nvim_buf_set_lines": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_buf_set_lines({buffer}, {start}, {end}, {strict_indexing}, {replacement}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "start"],
+      ["Integer", "end"],
+      ["Boolean", "strict_indexing"],
+      ["ArrayOf(String)", "replacement"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "start": "First line index",
+      "end": "Last line index, exclusive",
+      "strict_indexing": "Whether out-of-bounds should be an error.",
+      "replacement": "Array of lines to use as replacement"
+    },
+    "doc": [
+      "Sets (replaces) a line-range in the buffer.",
+      "Indexing is zero-based, end-exclusive. Negative indices are interpreted as\nlength+1+index: -1 refers to the index past the end. So to change or\ndelete the last element use start=-2 and end=-1.",
+      "To insert lines at a given index, set `start` and `end` to the same index.\nTo delete a range of lines, set `replacement` to an empty array.",
+      "Out-of-bounds indices are clamped to the nearest valid value, unless\n`strict_indexing` is set."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_set_mark": {
+    "annotations": [],
+    "signature": "nvim_buf_set_mark({buffer}, {name}, {line}, {col}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Integer", "line"],
+      ["Integer", "col"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer to set the mark on",
+      "name": "Mark name",
+      "line": "Line number",
+      "col": "Column/row number",
+      "opts": "Optional parameters. Reserved for future use."
+    },
+    "doc": [
+      "Sets a named mark in the given buffer, all marks are allowed\nfile/uppercase, visual, last change, etc. See |mark-motions|.",
+      "Marks are (1,0)-indexed. |api-indexing|",
+      "\nNote:\n    Passing 0 as line deletes the mark\n"
+    ],
+    "return": ["true if the mark was set, else false."],
+    "seealso": ["|nvim_buf_del_mark()|", "|nvim_buf_get_mark()|"]
+  },
+  "nvim_buf_set_name": {
+    "annotations": [],
+    "signature": "nvim_buf_set_name({buffer}, {name}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "name": "Buffer name"
+    },
+    "doc": ["Sets the full file name for a buffer"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_set_option": {
+    "annotations": [],
+    "signature": "nvim_buf_set_option({buffer}, {name}, {value}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "name": "Option name",
+      "value": "Option value"
+    },
+    "doc": [
+      "Sets a buffer option value. Passing `nil` as value deletes the option\n(only works if there's a global fallback)"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_set_text": {
+    "annotations": [],
+    "signature": "nvim_buf_set_text({buffer}, {start_row}, {start_col}, {end_row}, {end_col}, {replacement}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Integer", "start_row"],
+      ["Integer", "start_col"],
+      ["Integer", "end_row"],
+      ["Integer", "end_col"],
+      ["ArrayOf(String)", "replacement"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "start_row": "First line index",
+      "start_col": "Starting column (byte offset) on first line",
+      "end_row": "Last line index, inclusive",
+      "end_col": "Ending column (byte offset) on last line, exclusive",
+      "replacement": "Array of lines to use as replacement"
+    },
+    "doc": [
+      "Sets (replaces) a range in the buffer",
+      "This is recommended over |nvim_buf_set_lines()| when only modifying parts\nof a line, as extmarks will be preserved on non-modified parts of the\ntouched lines.",
+      "Indexing is zero-based. Row indices are end-inclusive, and column indices\nare end-exclusive.",
+      "To insert text at a given `(row, column)` location, use `start_row =\nend_row = row` and `start_col = end_col = col`. To delete the text in a\nrange, use `replacement = {}`.",
+      "Prefer |nvim_buf_set_lines()| if you are only adding or deleting entire\nlines."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_buf_set_var": {
+    "annotations": [],
+    "signature": "nvim_buf_set_var({buffer}, {name}, {value}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer handle, or 0 for current buffer",
+      "name": "Variable name",
+      "value": "Variable value"
+    },
+    "doc": ["Sets a buffer-scoped (b:) variable"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_call_atomic": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_call_atomic({calls}, {arena}, {err})",
+    "parameters": [
+      ["Array", "calls"],
+      ["Arena *", "arena"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "calls": "an array of calls, where each call is described by an array\n             with two elements: the request name, and an array of\n             arguments."
+    },
+    "doc": [
+      "Calls many API methods atomically.",
+      "This has two main usages:\n1. To perform several requests from an async context atomically, i.e.\n   without interleaving redraws, RPC requests from other clients, or user\n   interactions (however API methods may trigger autocommands or event\n   processing which have such side effects, e.g. |:sleep| may wake\n   timers).\n2. To minimize RPC overhead (roundtrips) of a sequence of many requests.\n"
+    ],
+    "return": [
+      "Array of two elements. The first is an array of return values. The\n    second is NIL if all calls succeeded. If a call resulted in an error,\n    it is a three-element array with the zero-based index of the call\n    which resulted in an error, the error type and the error message. If\n    an error occurred, the values from all preceding calls will still be\n    returned."
+    ],
+    "seealso": []
+  },
+  "nvim_call_dict_function": {
+    "annotations": [],
+    "signature": "nvim_call_dict_function({dict}, {fn}, {args}, {err})",
+    "parameters": [
+      ["Object", "dict"],
+      ["String", "fn"],
+      ["Array", "args"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "dict": "Dictionary, or String evaluating to a VimL |self| dict",
+      "fn": "Name of the function defined on the VimL dict",
+      "args": "Function arguments packed in an Array"
+    },
+    "doc": [
+      "Calls a VimL |Dictionary-function| with the given arguments.",
+      "On execution error: fails with VimL error, updates v:errmsg."
+    ],
+    "return": ["Result of the function call"],
+    "seealso": []
+  },
+  "nvim_call_function": {
+    "annotations": [],
+    "signature": "nvim_call_function({fn}, {args}, {err})",
+    "parameters": [
+      ["String", "fn"],
+      ["Array", "args"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "fn": "Function to call",
+      "args": "Function arguments packed in an Array"
+    },
+    "doc": [
+      "Calls a VimL function with the given arguments.",
+      "On execution error: fails with VimL error, updates v:errmsg."
+    ],
+    "return": ["Result of the function call"],
+    "seealso": []
+  },
+  "nvim_chan_send": {
+    "annotations": ["|RPC| only", "|vim.api| only"],
+    "signature": "nvim_chan_send({chan}, {data}, {err})",
+    "parameters": [
+      ["Integer", "chan"],
+      ["String", "data"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "chan": "id of the channel",
+      "data": "data to write. 8-bit clean: can contain NUL bytes."
+    },
+    "doc": [
+      "Send data to channel `id`. For a job, it writes it to the stdin of the\nprocess. For the stdio channel |channel-stdio|, it writes to Nvim's\nstdout. For an internal terminal instance (|nvim_open_term()|) it writes\ndirectly to terminal output. See |channel-bytes| for more information.",
+      "This function writes raw data, not RPC messages. If the channel was\ncreated with `rpc=true` then the channel expects RPC messages, use\n|vim.rpcnotify()| and |vim.rpcrequest()| instead."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_clear_autocmds": {
+    "annotations": [],
+    "signature": "nvim_clear_autocmds({opts}, {err})",
+    "parameters": [
+      ["Dict(clear_autocmds) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "opts": "Parameters\n            • event: (string|table) Examples:\n              • event: \"pat1\"\n              • event: { \"pat1\" }\n              • event: { \"pat1\", \"pat2\", \"pat3\" }\n\n            • pattern: (string|table)\n              • pattern or patterns to match exactly.\n                • For example, if you have `*.py` as that pattern for the\n                  autocmd, you must pass `*.py` exactly to clear it.\n                  `test.py` will not match the pattern.\n\n              • defaults to clearing all patterns.\n              • NOTE: Cannot be used with {buffer}\n\n            • buffer: (bufnr)\n              • clear only |autocmd-buflocal| autocommands.\n              • NOTE: Cannot be used with {pattern}\n\n            • group: (string|int) The augroup name or id.\n              • NOTE: If not passed, will only delete autocmds not in any group."
+    },
+    "doc": [
+      "Clear all autocommands that match the corresponding {opts}. To delete a\nparticular autocmd, see |nvim_del_autocmd|."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_cmd": {
+    "annotations": [],
+    "signature": "nvim_cmd({cmd}, {opts}, {err})",
+    "parameters": [
+      ["Dict(cmd) *", "cmd"],
+      ["Dict(cmd_opts) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "cmd": "Command to execute. Must be a Dictionary that can contain the\n            same values as the return value of |nvim_parse_cmd()| except\n            \"addr\", \"nargs\" and \"nextcmd\" which are ignored if provided.\n            All values except for \"cmd\" are optional.",
+      "opts": "Optional parameters.\n            • output: (boolean, default false) Whether to return command\n              output."
+    },
+    "doc": [
+      "Executes an Ex command.",
+      "Unlike |nvim_command()| this command takes a structured Dictionary instead\nof a String. This allows for easier construction and manipulation of an Ex\ncommand. This also allows for things such as having spaces inside a\ncommand argument, expanding filenames in a command that otherwise doesn't\nexpand filenames, etc.",
+      "On execution error: fails with VimL error, updates v:errmsg."
+    ],
+    "return": [
+      "Command output (non-error, non-shell |:!|) if `output` is true, else\n    empty string."
+    ],
+    "seealso": ["|nvim_exec()|", "|nvim_command()|"]
+  },
+  "nvim_command": {
+    "annotations": [],
+    "signature": "nvim_command({command}, {err})",
+    "parameters": [
+      ["String", "command"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "command": "Ex command string" },
+    "doc": [
+      "Executes an Ex command.",
+      "On execution error: fails with VimL error, updates v:errmsg.",
+      "Prefer using |nvim_cmd()| or |nvim_exec()| over this. To evaluate multiple\nlines of Vim script or an Ex command directly, use |nvim_exec()|. To\nconstruct an Ex command using a structured format and then execute it, use\n|nvim_cmd()|. To modify an Ex command before evaluating it, use\n|nvim_parse_cmd()| in conjunction with |nvim_cmd()|."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_create_augroup": {
+    "annotations": [],
+    "signature": "nvim_create_augroup({name}, {opts}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Dict(create_augroup) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "name": "String: The name of the group",
+      "opts": "Dictionary Parameters\n            • clear (bool) optional: defaults to true. Clear existing\n              commands if the group already exists |autocmd-groups|."
+    },
+    "doc": [
+      "Create or get an autocommand group |autocmd-groups|.",
+      "To get an existing group id, do: >\n    local id = vim.api.nvim_create_augroup(\"MyGroup\", {\n        clear = false\n    })\n\n<"
+    ],
+    "return": ["Integer id of the created group."],
+    "seealso": ["|autocmd-groups|"]
+  },
+  "nvim_create_autocmd": {
+    "annotations": [],
+    "signature": "nvim_create_autocmd({event}, {opts}, {err})",
+    "parameters": [
+      ["Object", "event"],
+      ["Dict(create_autocmd) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "event": "(string|array) The event or events to register this\n             autocommand",
+      "opts": "Dictionary of autocommand options:\n             • group (string|integer) optional: the autocommand group name\n               or id to match against.\n             • pattern (string|array) optional: pattern or patterns to\n               match against |autocmd-pattern|.\n             • buffer (integer) optional: buffer number for buffer local\n               autocommands |autocmd-buflocal|. Cannot be used with\n               {pattern}.\n             • desc (string) optional: description of the autocommand.\n             • callback (function|string) optional: if a string, the name\n               of a Vimscript function to call when this autocommand is\n               triggered. Otherwise, a Lua function which is called when\n               this autocommand is triggered. Cannot be used with\n               {command}. Lua callbacks can return true to delete the\n               autocommand; in addition, they accept a single table\n               argument with the following keys:\n               • id: (number) the autocommand id\n               • event: (string) the name of the event that triggered the\n                 autocommand |autocmd-events|\n               • group: (number|nil) the autocommand group id, if it\n                 exists\n               • match: (string) the expanded value of |<amatch>|\n               • buf: (number) the expanded value of |<abuf>|\n               • file: (string) the expanded value of |<afile>|\n               • data: (any) arbitrary data passed to\n                 |nvim_exec_autocmds()|\n\n             • command (string) optional: Vim command to execute on event.\n               Cannot be used with {callback}\n             • once (boolean) optional: defaults to false. Run the\n               autocommand only once |autocmd-once|.\n             • nested (boolean) optional: defaults to false. Run nested\n               autocommands |autocmd-nested|."
+    },
+    "doc": [
+      "Create an |autocommand|",
+      "The API allows for two (mutually exclusive) types of actions to be\nexecuted when the autocommand triggers: a callback function (Lua or\nVimscript), or a command (like regular autocommands).",
+      "Example using callback: >\n    -- Lua function\n    local myluafun = function() print(\"This buffer enters\") end\n\n    -- Vimscript function name (as a string)\n    local myvimfun = \"g:MyVimFunction\"\n\n    vim.api.nvim_create_autocmd({\"BufEnter\", \"BufWinEnter\"}, {\n      pattern = {\"*.c\", \"*.h\"},\n      callback = myluafun,  -- Or myvimfun\n    })\n\n<",
+      "Lua functions receive a table with information about the autocmd event as\nan argument. To use a function which itself accepts another (optional)\nparameter, wrap the function in a lambda:",
+      ">\n    -- Lua function with an optional parameter.\n    -- The autocmd callback would pass a table as argument but this\n    -- function expects number|nil\n    local myluafun = function(bufnr) bufnr = bufnr or vim.api.nvim_get_current_buf() end\n\n    vim.api.nvim_create_autocmd({\"BufEnter\", \"BufWinEnter\"}, {\n      pattern = {\"*.c\", \"*.h\"},\n      callback = function() myluafun() end,\n    })\n\n<",
+      "Example using command: >\n    vim.api.nvim_create_autocmd({\"BufEnter\", \"BufWinEnter\"}, {\n      pattern = {\"*.c\", \"*.h\"},\n      command = \"echo 'Entering a C or C++ file'\",\n    })\n\n<",
+      "Example values for pattern: >\n  pattern = \"*.py\"\n  pattern = { \"*.py\", \"*.pyi\" }\n\n<",
+      "Example values for event: >\n  \"BufWritePre\"\n  {\"CursorHold\", \"BufWritePre\", \"BufWritePost\"}\n\n<"
+    ],
+    "return": ["Integer id of the created autocommand."],
+    "seealso": ["|autocommand|", "|nvim_del_autocmd()|"]
+  },
+  "nvim_create_buf": {
+    "annotations": [],
+    "signature": "nvim_create_buf({listed}, {scratch}, {err})",
+    "parameters": [
+      ["Boolean", "listed"],
+      ["Boolean", "scratch"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "listed": "Sets 'buflisted'",
+      "scratch": "Creates a \"throwaway\" |scratch-buffer| for temporary work\n               (always 'nomodified'). Also sets 'nomodeline' on the\n               buffer."
+    },
+    "doc": ["Creates a new, empty, unnamed buffer."],
+    "return": ["Buffer handle, or 0 on error"],
+    "seealso": ["buf_open_scratch"]
+  },
+  "nvim_create_namespace": {
+    "annotations": [],
+    "signature": "nvim_create_namespace({name})",
+    "parameters": [["String", "name"]],
+    "parameters_doc": { "name": "Namespace name or empty string" },
+    "doc": [
+      "Creates a new *namespace* or gets an existing one.",
+      "Namespaces are used for buffer highlights and virtual text, see\n|nvim_buf_add_highlight()| and |nvim_buf_set_extmark()|.",
+      "Namespaces can be named or anonymous. If `name` matches an existing\nnamespace, the associated id is returned. If `name` is an empty string a\nnew, anonymous namespace is created."
+    ],
+    "return": ["Namespace id"],
+    "seealso": []
+  },
+  "nvim_create_user_command": {
+    "annotations": [],
+    "signature": "nvim_create_user_command({name}, {command}, {opts}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Object", "command"],
+      ["Dict(user_command) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "name": "Name of the new user command. Must begin with an uppercase\n               letter.",
+      "command": "Replacement command to execute when this user command is\n               executed. When called from Lua, the command can also be a\n               Lua function. The function is called with a single table\n               argument that contains the following keys:\n               • args: (string) The args passed to the command, if any\n                 |<args>|\n               • fargs: (table) The args split by unescaped whitespace\n                 (when more than one argument is allowed), if any\n                 |<f-args>|\n               • bang: (boolean) \"true\" if the command was executed with a\n                 ! modifier |<bang>|\n               • line1: (number) The starting line of the command range\n                 |<line1>|\n               • line2: (number) The final line of the command range\n                 |<line2>|\n               • range: (number) The number of items in the command range:\n                 0, 1, or 2 |<range>|\n               • count: (number) Any count supplied |<count>|\n               • reg: (string) The optional register, if specified |<reg>|\n               • mods: (string) Command modifiers, if any |<mods>|\n               • smods: (table) Command modifiers in a structured format.\n                 Has the same structure as the \"mods\" key of\n                 |nvim_parse_cmd()|.",
+      "opts": "Optional command attributes. See |command-attributes| for\n               more details. To use boolean attributes (such as\n               |:command-bang| or |:command-bar|) set the value to \"true\".\n               In addition to the string options listed in\n               |:command-complete|, the \"complete\" key also accepts a Lua\n               function which works like the \"customlist\" completion mode\n               |:command-completion-customlist|. Additional parameters:\n               • desc: (string) Used for listing the command when a Lua\n                 function is used for {command}.\n               • force: (boolean, default true) Override any previous\n                 definition.\n               • preview: (function) Preview callback for 'inccommand'\n                 |:command-preview|"
+    },
+    "doc": [
+      "Create a new user command |user-commands|",
+      "{name} is the name of the new command. The name must begin with an\nuppercase letter.",
+      "{command} is the replacement text or Lua function to execute.",
+      "Example: >\n   :call nvim_create_user_command('SayHello', 'echo \"Hello world!\"', {})\n   :SayHello\n   Hello world!\n\n<"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_del_augroup_by_id": {
+    "annotations": [],
+    "signature": "nvim_del_augroup_by_id({id}, {err})",
+    "parameters": [
+      ["Integer", "id"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "id": "Integer The id of the group." },
+    "doc": [
+      "Delete an autocommand group by id.",
+      "To get a group id one can use |nvim_get_autocmds()|.",
+      "NOTE: behavior differs from |augroup-delete|. When deleting a group,\nautocommands contained in this group will also be deleted and cleared.\nThis group will no longer exist."
+    ],
+    "return": [],
+    "seealso": ["|nvim_del_augroup_by_name()|", "|nvim_create_augroup()|"]
+  },
+  "nvim_del_augroup_by_name": {
+    "annotations": [],
+    "signature": "nvim_del_augroup_by_name({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "String The name of the group." },
+    "doc": [
+      "Delete an autocommand group by name.",
+      "NOTE: behavior differs from |augroup-delete|. When deleting a group,\nautocommands contained in this group will also be deleted and cleared.\nThis group will no longer exist."
+    ],
+    "return": [],
+    "seealso": ["|autocommand-groups|"]
+  },
+  "nvim_del_autocmd": {
+    "annotations": [],
+    "signature": "nvim_del_autocmd({id}, {err})",
+    "parameters": [
+      ["Integer", "id"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "id": "Integer The id returned by nvim_create_autocmd" },
+    "doc": [
+      "Delete an autocommand by id.",
+      "NOTE: Only autocommands created via the API have an id."
+    ],
+    "return": [],
+    "seealso": ["|nvim_create_autocmd()|"]
+  },
+  "nvim_del_current_line": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_del_current_line({err})",
+    "parameters": [["Error *", "err"]],
+    "parameters_doc": {},
+    "doc": ["Deletes the current line."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_del_keymap": {
+    "annotations": [],
+    "signature": "nvim_del_keymap({mode}, {lhs}, {err})",
+    "parameters": [
+      ["String", "mode"],
+      ["String", "lhs"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": [
+      "Unmaps a global |mapping| for the given mode.",
+      "To unmap a buffer-local mapping, use |nvim_buf_del_keymap()|."
+    ],
+    "return": [],
+    "seealso": ["|nvim_set_keymap()|"]
+  },
+  "nvim_del_mark": {
+    "annotations": [],
+    "signature": "nvim_del_mark({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Mark name" },
+    "doc": [
+      "Deletes an uppercase/file named mark. See |mark-motions|.",
+      "\nNote:\n    fails with error if a lowercase or buffer local named mark is used.\n"
+    ],
+    "return": ["true if the mark was deleted, else false."],
+    "seealso": ["|nvim_buf_del_mark()|", "|nvim_get_mark()|"]
+  },
+  "nvim_del_user_command": {
+    "annotations": [],
+    "signature": "nvim_del_user_command({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Name of the command to delete." },
+    "doc": ["Delete a user-defined command."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_del_var": {
+    "annotations": [],
+    "signature": "nvim_del_var({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Variable name" },
+    "doc": ["Removes a global (g:) variable."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_echo": {
+    "annotations": [],
+    "signature": "nvim_echo({chunks}, {history}, {opts}, {err})",
+    "parameters": [
+      ["Array", "chunks"],
+      ["Boolean", "history"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "chunks": "A list of [text, hl_group] arrays, each representing a text\n               chunk with specified highlight. `hl_group` element can be\n               omitted for no highlight.",
+      "history": "if true, add to |message-history|.",
+      "opts": "Optional parameters. Reserved for future use."
+    },
+    "doc": ["Echo a message."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_err_write": {
+    "annotations": [],
+    "signature": "nvim_err_write({str})",
+    "parameters": [["String", "str"]],
+    "parameters_doc": { "str": "Message" },
+    "doc": [
+      "Writes a message to the Vim error buffer. Does not append \"\\n\", the\nmessage is buffered (won't display) until a linefeed is written."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_err_writeln": {
+    "annotations": [],
+    "signature": "nvim_err_writeln({str})",
+    "parameters": [["String", "str"]],
+    "parameters_doc": { "str": "Message" },
+    "doc": [
+      "Writes a message to the Vim error buffer. Appends \"\\n\", so the buffer is\nflushed (and displayed)."
+    ],
+    "return": [],
+    "seealso": ["nvim_err_write()"]
+  },
+  "nvim_error_event": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_error_event({lvl}, {data})",
+    "parameters": [
+      ["Integer", "lvl"],
+      ["String", "data"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_eval": {
+    "annotations": [],
+    "signature": "nvim_eval({expr}, {err})",
+    "parameters": [
+      ["String", "expr"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "expr": "VimL expression string" },
+    "doc": [
+      "Evaluates a VimL |expression|. Dictionaries and Lists are recursively\nexpanded.",
+      "On execution error: fails with VimL error, updates v:errmsg."
+    ],
+    "return": ["Evaluation result or expanded object"],
+    "seealso": []
+  },
+  "nvim_eval_statusline": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_eval_statusline({str}, {opts}, {err})",
+    "parameters": [
+      ["String", "str"],
+      ["Dict(eval_statusline) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "str": "Statusline string (see 'statusline').",
+      "opts": "Optional parameters.\n            • winid: (number) |window-ID| of the window to use as context\n              for statusline.\n            • maxwidth: (number) Maximum width of statusline.\n            • fillchar: (string) Character to fill blank spaces in the\n              statusline (see 'fillchars'). Treated as single-width even\n              if it isn't.\n            • highlights: (boolean) Return highlight information.\n            • use_winbar: (boolean) Evaluate winbar instead of statusline.\n            • use_tabline: (boolean) Evaluate tabline instead of\n              statusline. When true, {winid} is ignored. Mutually\n              exclusive with {use_winbar}."
+    },
+    "doc": ["Evaluates statusline string."],
+    "return": [
+      "Dictionary containing statusline information, with these keys:\n    • str: (string) Characters that will be displayed on the statusline.\n    • width: (number) Display width of the statusline.\n    • highlights: Array containing highlight information of the\n      statusline. Only included when the \"highlights\" key in {opts} is\n      true. Each element of the array is a |Dictionary| with these keys:\n      • start: (number) Byte index (0-based) of first character that uses\n        the highlight.\n      • group: (string) Name of highlight group.\n\n"
+    ],
+    "seealso": []
+  },
+  "nvim_exec": {
+    "annotations": [],
+    "signature": "nvim_exec({src}, {output}, {err})",
+    "parameters": [
+      ["String", "src"],
+      ["Boolean", "output"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "src": "Vimscript code",
+      "output": "Capture and return all (non-error, non-shell |:!|) output"
+    },
+    "doc": [
+      "Executes Vimscript (multiline block of Ex commands), like anonymous\n|:source|.",
+      "Unlike |nvim_command()| this function supports heredocs, script-scope\n(s:), etc.",
+      "On execution error: fails with VimL error, updates v:errmsg."
+    ],
+    "return": [
+      "Output (non-error, non-shell |:!|) if `output` is true, else empty\n    string."
+    ],
+    "seealso": ["|execute()|", "|nvim_command()|", "|nvim_cmd()|"]
+  },
+  "nvim_exec_autocmds": {
+    "annotations": [],
+    "signature": "nvim_exec_autocmds({event}, {opts}, {err})",
+    "parameters": [
+      ["Object", "event"],
+      ["Dict(exec_autocmds) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "event": "(String|Array) The event or events to execute",
+      "opts": "Dictionary of autocommand options:\n             • group (string|integer) optional: the autocommand group name\n               or id to match against. |autocmd-groups|.\n             • pattern (string|array) optional: defaults to \"*\"\n               |autocmd-pattern|. Cannot be used with {buffer}.\n             • buffer (integer) optional: buffer number\n               |autocmd-buflocal|. Cannot be used with {pattern}.\n             • modeline (bool) optional: defaults to true. Process the\n               modeline after the autocommands |<nomodeline>|.\n             • data (any): arbitrary data to send to the autocommand\n               callback. See |nvim_create_autocmd()| for details."
+    },
+    "doc": [
+      "Execute all autocommands for {event} that match the corresponding {opts}\n|autocmd-execute|."
+    ],
+    "return": [],
+    "seealso": ["|:doautocmd|"]
+  },
+  "nvim_exec_lua": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_exec_lua({code}, {args}, {err})",
+    "parameters": [
+      ["String", "code"],
+      ["Array", "args"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "code": "Lua code to execute", "args": "Arguments to the code" },
+    "doc": [
+      "Execute Lua code. Parameters (if any) are available as `...` inside the\nchunk. The chunk can return a value.",
+      "Only statements are executed. To evaluate an expression, prefix it with\n`return`: return my_function(...)"
+    ],
+    "return": ["Return value of Lua code if present or NIL."],
+    "seealso": []
+  },
+  "nvim_feedkeys": {
+    "annotations": [],
+    "signature": "nvim_feedkeys({keys}, {mode}, {escape_ks})",
+    "parameters": [
+      ["String", "keys"],
+      ["String", "mode"],
+      ["Boolean", "escape_ks"]
+    ],
+    "parameters_doc": {
+      "keys": "to be typed",
+      "mode": "behavior flags, see |feedkeys()|",
+      "escape_ks": "If true, escape K_SPECIAL bytes in `keys` This should be\n                 false if you already used |nvim_replace_termcodes()|, and\n                 true otherwise."
+    },
+    "doc": [
+      "Sends input-keys to Nvim, subject to various quirks controlled by `mode`\nflags. This is a blocking call, unlike |nvim_input()|.",
+      "On execution error: does not fail, but updates v:errmsg.",
+      "To input sequences like <C-o> use |nvim_replace_termcodes()| (typically\nwith escape_ks=false) to replace |keycodes|, then pass the result to\nnvim_feedkeys().",
+      "Example: >\n    :let key = nvim_replace_termcodes(\"<C-o>\", v:true, v:false, v:true)\n    :call nvim_feedkeys(key, 'n', v:false)\n\n<"
+    ],
+    "return": [],
+    "seealso": ["feedkeys()", "vim_strsave_escape_ks"]
+  },
+  "nvim_get_all_options_info": {
+    "annotations": [],
+    "signature": "nvim_get_all_options_info({err})",
+    "parameters": [["Error *", "err"]],
+    "parameters_doc": {},
+    "doc": [
+      "Gets the option information for all options.",
+      "The dictionary has the full option names as keys and option metadata\ndictionaries as detailed at |nvim_get_option_info|."
+    ],
+    "return": ["dictionary of all options"],
+    "seealso": []
+  },
+  "nvim_get_api_info": {
+    "annotations": ["|api-fast|", "|RPC| only"],
+    "signature": "nvim_get_api_info({arena})",
+    "parameters": [["Arena *", "arena"]],
+    "parameters_doc": {},
+    "doc": [
+      "Returns a 2-tuple (Array), where item 0 is the current channel id and item\n1 is the |api-metadata| map (Dictionary)."
+    ],
+    "return": ["2-tuple [{channel-id}, {api-metadata}]"],
+    "seealso": []
+  },
+  "nvim_get_autocmds": {
+    "annotations": [],
+    "signature": "nvim_get_autocmds({opts}, {err})",
+    "parameters": [
+      ["Dict(get_autocmds) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "opts": "Dictionary with at least one of the following:\n            • group (string|integer): the autocommand group name or id to\n              match against.\n            • event (string|array): event or events to match against\n              |autocmd-events|.\n            • pattern (string|array): pattern or patterns to match against\n              |autocmd-pattern|. Cannot be used with {buffer}\n            • buffer: Buffer number or list of buffer numbers for buffer\n              local autocommands |autocmd-buflocal|. Cannot be used with\n              {pattern}"
+    },
+    "doc": [
+      "Get all autocommands that match the corresponding {opts}.",
+      "These examples will get autocommands matching ALL the given criteria: >\n  -- Matches all criteria\n  autocommands = vim.api.nvim_get_autocmds({\n    group = \"MyGroup\",\n    event = {\"BufEnter\", \"BufWinEnter\"},\n    pattern = {\"*.c\", \"*.h\"}\n  })\n\n  -- All commands from one group\n  autocommands = vim.api.nvim_get_autocmds({\n    group = \"MyGroup\",\n  })\n\n<",
+      "NOTE: When multiple patterns or events are provided, it will find all the\nautocommands that match any combination of them."
+    ],
+    "return": [
+      "Array of autocommands matching the criteria, with each item containing\n    the following fields:\n    • id (number): the autocommand id (only when defined with the API).\n    • group (integer): the autocommand group id.\n    • group_name (string): the autocommand group name.\n    • desc (string): the autocommand description.\n    • event (string): the autocommand event.\n    • command (string): the autocommand command. Note: this will be empty\n      if a callback is set.\n    • callback (function|string|nil): Lua function or name of a Vim script\n      function which is executed when this autocommand is triggered.\n    • once (boolean): whether the autocommand is only run once.\n    • pattern (string): the autocommand pattern. If the autocommand is\n      buffer local |autocmd-buffer-local|:\n    • buflocal (boolean): true if the autocommand is buffer local.\n    • buffer (number): the buffer number.\n"
+    ],
+    "seealso": []
+  },
+  "nvim_get_chan_info": {
+    "annotations": [],
+    "signature": "nvim_get_chan_info({chan}, {err})",
+    "parameters": [
+      ["Integer", "chan"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": ["Gets information about a channel."],
+    "return": [
+      "Dictionary describing a channel, with these keys:\n    • \"id\" Channel id.\n    • \"argv\" (optional) Job arguments list.\n    • \"stream\" Stream underlying the channel.\n      • \"stdio\" stdin and stdout of this Nvim instance\n      • \"stderr\" stderr of this Nvim instance\n      • \"socket\" TCP/IP socket or named pipe\n      • \"job\" Job with communication over its stdio.\n\n    • \"mode\" How data received on the channel is interpreted.\n      • \"bytes\" Send and receive raw bytes.\n      • \"terminal\" |terminal| instance interprets ASCII sequences.\n      • \"rpc\" |RPC| communication on the channel is active.\n\n    • \"pty\" (optional) Name of pseudoterminal. On a POSIX system this is a\n      device path like \"/dev/pts/1\". If the name is unknown, the key will\n      still be present if a pty is used (e.g. for conpty on Windows).\n    • \"buffer\" (optional) Buffer with connected |terminal| instance.\n    • \"client\" (optional) Info about the peer (client on the other end of\n      the RPC channel), if provided by it via |nvim_set_client_info()|.\n"
+    ],
+    "seealso": []
+  },
+  "nvim_get_color_by_name": {
+    "annotations": [],
+    "signature": "nvim_get_color_by_name({name})",
+    "parameters": [["String", "name"]],
+    "parameters_doc": { "name": "Color name or \"#rrggbb\" string" },
+    "doc": [
+      "Returns the 24-bit RGB value of a |nvim_get_color_map()| color name or\n\"#rrggbb\" hexadecimal string.",
+      "Example: >\n    :echo nvim_get_color_by_name(\"Pink\")\n    :echo nvim_get_color_by_name(\"#cbcbcb\")\n\n<"
+    ],
+    "return": ["24-bit RGB value, or -1 for invalid argument."],
+    "seealso": []
+  },
+  "nvim_get_color_map": {
+    "annotations": [],
+    "signature": "nvim_get_color_map()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": [
+      "Returns a map of color names and RGB values.",
+      "Keys are color names (e.g. \"Aqua\") and values are 24-bit RGB color values\n(e.g. 65535)."
+    ],
+    "return": ["Map of color names and RGB values."],
+    "seealso": []
+  },
+  "nvim_get_commands": {
+    "annotations": [],
+    "signature": "nvim_get_commands({opts}, {err})",
+    "parameters": [
+      ["Dict(get_commands) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "opts": "Optional parameters. Currently only supports {\"builtin\":false}"
+    },
+    "doc": [
+      "Gets a map of global (non-buffer-local) Ex commands.",
+      "Currently only |user-commands| are supported, not builtin Ex commands."
+    ],
+    "return": ["Map of maps describing commands."],
+    "seealso": []
+  },
+  "nvim_get_context": {
+    "annotations": [],
+    "signature": "nvim_get_context({opts}, {err})",
+    "parameters": [
+      ["Dict(context) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "opts": "Optional parameters.\n            • types: List of |context-types| (\"regs\", \"jumps\", \"bufs\",\n              \"gvars\", …) to gather, or empty for \"all\"."
+    },
+    "doc": ["Gets a map of the current editor state."],
+    "return": ["map of global |context|."],
+    "seealso": []
+  },
+  "nvim_get_current_buf": {
+    "annotations": [],
+    "signature": "nvim_get_current_buf()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets the current buffer."],
+    "return": ["Buffer handle"],
+    "seealso": []
+  },
+  "nvim_get_current_line": {
+    "annotations": [],
+    "signature": "nvim_get_current_line({err})",
+    "parameters": [["Error *", "err"]],
+    "parameters_doc": {},
+    "doc": ["Gets the current line."],
+    "return": ["Current line string"],
+    "seealso": []
+  },
+  "nvim_get_current_tabpage": {
+    "annotations": [],
+    "signature": "nvim_get_current_tabpage()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets the current tabpage."],
+    "return": ["Tabpage handle"],
+    "seealso": []
+  },
+  "nvim_get_current_win": {
+    "annotations": [],
+    "signature": "nvim_get_current_win()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets the current window."],
+    "return": ["Window handle"],
+    "seealso": []
+  },
+  "nvim_get_hl_by_id": {
+    "annotations": [],
+    "signature": "nvim_get_hl_by_id({hl_id}, {rgb}, {arena}, {err})",
+    "parameters": [
+      ["Integer", "hl_id"],
+      ["Boolean", "rgb"],
+      ["Arena *", "arena"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "hl_id": "Highlight id as returned by |hlID()|",
+      "rgb": "Export RGB colors"
+    },
+    "doc": ["Gets a highlight definition by id. |hlID()|"],
+    "return": ["Highlight definition map"],
+    "seealso": ["nvim_get_hl_by_name"]
+  },
+  "nvim_get_hl_by_name": {
+    "annotations": [],
+    "signature": "nvim_get_hl_by_name({name}, {rgb}, {arena}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Boolean", "rgb"],
+      ["Arena *", "arena"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Highlight group name", "rgb": "Export RGB colors" },
+    "doc": ["Gets a highlight definition by name."],
+    "return": ["Highlight definition map"],
+    "seealso": ["nvim_get_hl_by_id"]
+  },
+  "nvim_get_hl_id_by_name": {
+    "annotations": [],
+    "signature": "nvim_get_hl_id_by_name({name})",
+    "parameters": [["String", "name"]],
+    "parameters_doc": {},
+    "doc": [
+      "Gets a highlight group by name",
+      "similar to |hlID()|, but allocates a new ID if not present."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_get_keymap": {
+    "annotations": [],
+    "signature": "nvim_get_keymap({mode})",
+    "parameters": [["String", "mode"]],
+    "parameters_doc": { "mode": "Mode short-name (\"n\", \"i\", \"v\", ...)" },
+    "doc": ["Gets a list of global (non-buffer-local) |mapping| definitions."],
+    "return": [
+      "Array of |maparg()|-like dictionaries describing mappings. The\n    \"buffer\" key is always zero."
+    ],
+    "seealso": []
+  },
+  "nvim_get_mark": {
+    "annotations": [],
+    "signature": "nvim_get_mark({name}, {opts}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "name": "Mark name",
+      "opts": "Optional parameters. Reserved for future use."
+    },
+    "doc": [
+      "Return a tuple (row, col, buffer, buffername) representing the position of\nthe uppercase/file named mark. See |mark-motions|.",
+      "Marks are (1,0)-indexed. |api-indexing|",
+      "\nNote:\n    fails with error if a lowercase or buffer local named mark is used.\n"
+    ],
+    "return": [
+      "4-tuple (row, col, buffer, buffername), (0, 0, 0, '') if the mark is\n    not set."
+    ],
+    "seealso": ["|nvim_buf_set_mark()|", "|nvim_del_mark()|"]
+  },
+  "nvim_get_mode": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_get_mode()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": [
+      "Gets the current mode. |mode()| \"blocking\" is true if Nvim is waiting for\ninput."
+    ],
+    "return": ["Dictionary { \"mode\": String, \"blocking\": Boolean }"],
+    "seealso": []
+  },
+  "nvim_get_namespaces": {
+    "annotations": [],
+    "signature": "nvim_get_namespaces()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets existing, non-anonymous namespaces."],
+    "return": ["dict that maps from names to namespace ids."],
+    "seealso": []
+  },
+  "nvim_get_option": {
+    "annotations": [],
+    "signature": "nvim_get_option({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Option name" },
+    "doc": ["Gets the global value of an option."],
+    "return": ["Option value (global)"],
+    "seealso": []
+  },
+  "nvim_get_option_info": {
+    "annotations": [],
+    "signature": "nvim_get_option_info({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Option name" },
+    "doc": [
+      "Gets the option information for one option",
+      "Resulting dictionary has keys:\n• name: Name of the option (like 'filetype')\n• shortname: Shortened name of the option (like 'ft')\n• type: type of option (\"string\", \"number\" or \"boolean\")\n• default: The default value for the option\n• was_set: Whether the option was set.\n• last_set_sid: Last set script id (if any)\n• last_set_linenr: line number where option was set\n• last_set_chan: Channel where option was set (0 for local)\n• scope: one of \"global\", \"win\", or \"buf\"\n• global_local: whether win or buf option has a global value\n• commalist: List of comma separated values\n• flaglist: List of single char flags\n"
+    ],
+    "return": ["Option Information"],
+    "seealso": []
+  },
+  "nvim_get_option_value": {
+    "annotations": [],
+    "signature": "nvim_get_option_value({name}, {opts}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Dict(option) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "name": "Option name",
+      "opts": "Optional parameters\n            • scope: One of \"global\" or \"local\". Analogous to |:setglobal|\n              and |:setlocal|, respectively.\n            • win: |window-ID|. Used for getting window local options.\n            • buf: Buffer number. Used for getting buffer local options.\n              Implies {scope} is \"local\"."
+    },
+    "doc": [
+      "Gets the value of an option. The behavior of this function matches that of\n|:set|: the local value of an option is returned if it exists; otherwise,\nthe global value is returned. Local values always correspond to the\ncurrent buffer or window, unless \"buf\" or \"win\" is set in {opts}."
+    ],
+    "return": ["Option value"],
+    "seealso": []
+  },
+  "nvim_get_proc": {
+    "annotations": [],
+    "signature": "nvim_get_proc({pid}, {err})",
+    "parameters": [
+      ["Integer", "pid"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": ["Gets info describing process `pid`."],
+    "return": ["Map of process properties, or NIL if process not found."],
+    "seealso": []
+  },
+  "nvim_get_proc_children": {
+    "annotations": [],
+    "signature": "nvim_get_proc_children({pid}, {err})",
+    "parameters": [
+      ["Integer", "pid"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": ["Gets the immediate children of process `pid`."],
+    "return": ["Array of child process ids, empty if process not found."],
+    "seealso": []
+  },
+  "nvim_get_runtime_file": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_get_runtime_file({name}, {all}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Boolean", "all"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "name": "pattern of files to search for",
+      "all": "whether to return all matches or only the first"
+    },
+    "doc": [
+      "Find files in runtime directories",
+      "'name' can contain wildcards. For example\nnvim_get_runtime_file(\"colors/*.vim\", true) will return all color scheme\nfiles. Always use forward slashes (/) in the search pattern for\nsubdirectories regardless of platform.",
+      "It is not an error to not find any files. An empty array is returned then."
+    ],
+    "return": ["list of absolute paths to the found files"],
+    "seealso": []
+  },
+  "nvim_get_var": {
+    "annotations": [],
+    "signature": "nvim_get_var({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Variable name" },
+    "doc": ["Gets a global (g:) variable."],
+    "return": ["Variable value"],
+    "seealso": []
+  },
+  "nvim_get_vvar": {
+    "annotations": [],
+    "signature": "nvim_get_vvar({name}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Variable name" },
+    "doc": ["Gets a v: variable."],
+    "return": ["Variable value"],
+    "seealso": []
+  },
+  "nvim_input": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_input({keys})",
+    "parameters": [["String", "keys"]],
+    "parameters_doc": { "keys": "to be typed" },
+    "doc": [
+      "Queues raw user-input. Unlike |nvim_feedkeys()|, this uses a low-level\ninput buffer and the call is non-blocking (input is processed\nasynchronously by the eventloop).",
+      "On execution error: does not fail, but updates v:errmsg.",
+      "\nNote:\n    |keycodes| like <CR> are translated, so \"<\" is special. To input a\n    literal \"<\", send <LT>.\n\nNote:\n    For mouse events use |nvim_input_mouse()|. The pseudokey form\n    \"<LeftMouse><col,row>\" is deprecated since |api-level| 6.\n"
+    ],
+    "return": [
+      "Number of bytes actually written (can be fewer than requested if the\n    buffer becomes full)."
+    ],
+    "seealso": []
+  },
+  "nvim_input_mouse": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_input_mouse({button}, {action}, {modifier}, {grid}, {row}, {col}, {err})",
+    "parameters": [
+      ["String", "button"],
+      ["String", "action"],
+      ["String", "modifier"],
+      ["Integer", "grid"],
+      ["Integer", "row"],
+      ["Integer", "col"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "button": "Mouse button: one of \"left\", \"right\", \"middle\", \"wheel\",\n                \"move\".",
+      "action": "For ordinary buttons, one of \"press\", \"drag\", \"release\".\n                For the wheel, one of \"up\", \"down\", \"left\", \"right\".\n                Ignored for \"move\".",
+      "modifier": "String of modifiers each represented by a single char. The\n                same specifiers are used as for a key press, except that\n                the \"-\" separator is optional, so \"C-A-\", \"c-a\" and \"CA\"\n                can all be used to specify Ctrl+Alt+click.",
+      "grid": "Grid number if the client uses |ui-multigrid|, else 0.",
+      "row": "Mouse row-position (zero-based, like redraw events)",
+      "col": "Mouse column-position (zero-based, like redraw events)"
+    },
+    "doc": [
+      "Send mouse event from GUI.",
+      "Non-blocking: does not wait on any result, but queues the event to be\nprocessed soon by the event loop.",
+      "\nNote:\n    Currently this doesn't support \"scripting\" multiple mouse events by\n    calling it multiple times in a loop: the intermediate mouse positions\n    will be ignored. It should be used to implement real-time mouse input\n    in a GUI. The deprecated pseudokey form (\"<LeftMouse><col,row>\") of\n    |nvim_input()| has the same limitation.\n"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_list_bufs": {
+    "annotations": [],
+    "signature": "nvim_list_bufs()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": [
+      "Gets the current list of buffer handles",
+      "Includes unlisted (unloaded/deleted) buffers, like `:ls!`. Use\n|nvim_buf_is_loaded()| to check if a buffer is loaded."
+    ],
+    "return": ["List of buffer handles"],
+    "seealso": []
+  },
+  "nvim_list_chans": {
+    "annotations": [],
+    "signature": "nvim_list_chans()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Get information about all open channels."],
+    "return": [
+      "Array of Dictionaries, each describing a channel with the format\n    specified at |nvim_get_chan_info()|."
+    ],
+    "seealso": []
+  },
+  "nvim_list_runtime_paths": {
+    "annotations": [],
+    "signature": "nvim_list_runtime_paths({err})",
+    "parameters": [["Error *", "err"]],
+    "parameters_doc": {},
+    "doc": ["Gets the paths contained in 'runtimepath'."],
+    "return": ["List of paths"],
+    "seealso": []
+  },
+  "nvim_list_tabpages": {
+    "annotations": [],
+    "signature": "nvim_list_tabpages()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets the current list of tabpage handles."],
+    "return": ["List of tabpage handles"],
+    "seealso": []
+  },
+  "nvim_list_uis": {
+    "annotations": [],
+    "signature": "nvim_list_uis()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets a list of dictionaries representing attached UIs."],
+    "return": [
+      "Array of UI dictionaries, each with these keys:\n    • \"height\" Requested height of the UI\n    • \"width\" Requested width of the UI\n    • \"rgb\" true if the UI uses RGB colors (false implies |cterm-colors|)\n    • \"ext_...\" Requested UI extensions, see |ui-option|\n    • \"chan\" Channel id of remote UI (not present for TUI)\n"
+    ],
+    "seealso": []
+  },
+  "nvim_list_wins": {
+    "annotations": [],
+    "signature": "nvim_list_wins()",
+    "parameters": [["void", ""]],
+    "parameters_doc": {},
+    "doc": ["Gets the current list of window handles."],
+    "return": ["List of window handles"],
+    "seealso": []
+  },
+  "nvim_load_context": {
+    "annotations": [],
+    "signature": "nvim_load_context({dict})",
+    "parameters": [["Dictionary", "dict"]],
+    "parameters_doc": { "dict": "|Context| map." },
+    "doc": ["Sets the current editor state from the given |context| map."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_notify": {
+    "annotations": [],
+    "signature": "nvim_notify({msg}, {log_level}, {opts}, {err})",
+    "parameters": [
+      ["String", "msg"],
+      ["Integer", "log_level"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "msg": "Message to display to the user",
+      "log_level": "The log level",
+      "opts": "Reserved for future use."
+    },
+    "doc": [
+      "Notify the user with a message",
+      "Relays the call to vim.notify . By default forwards your message in the\necho area but can be overridden to trigger desktop notifications."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_open_term": {
+    "annotations": [],
+    "signature": "nvim_open_term({buffer}, {opts}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["DictionaryOf(LuaRef)", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "the buffer to use (expected to be empty)",
+      "opts": "Optional parameters.\n              • on_input: lua callback for input sent, i e keypresses in\n                terminal mode. Note: keypresses are sent raw as they would\n                be to the pty master end. For instance, a carriage return\n                is sent as a \"\\r\", not as a \"\\n\". |textlock| applies. It\n                is possible to call |nvim_chan_send| directly in the\n                callback however. [\"input\", term, bufnr, data]"
+    },
+    "doc": [
+      "Open a terminal instance in a buffer",
+      "By default (and currently the only option) the terminal will not be\nconnected to an external process. Instead, input send on the channel will\nbe echoed directly by the terminal. This is useful to display ANSI\nterminal sequences returned as part of a rpc message, or similar.",
+      "Note: to directly initiate the terminal using the right size, display the\nbuffer in a configured window before calling this. For instance, for a\nfloating display, first create an empty buffer using |nvim_create_buf()|,\nthen display it using |nvim_open_win()|, and then call this function. Then\n|nvim_chan_send()| can be called immediately to process sequences in a\nvirtual terminal having the intended size."
+    ],
+    "return": ["Channel id, or 0 on error"],
+    "seealso": []
+  },
+  "nvim_open_win": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_open_win({buffer}, {enter}, {config}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Boolean", "enter"],
+      ["Dict(float_config) *", "config"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "buffer": "Buffer to display, or 0 for current buffer",
+      "enter": "Enter the window (make it the current window)",
+      "config": "Map defining the window configuration. Keys:\n              • relative: Sets the window layout to \"floating\", placed at\n                (row,col) coordinates relative to:\n                • \"editor\" The global editor grid\n                • \"win\" Window given by the `win` field, or current\n                  window.\n                • \"cursor\" Cursor position in current window.\n\n              • win: |window-ID| for relative=\"win\".\n              • anchor: Decides which corner of the float to place at\n                (row,col):\n                • \"NW\" northwest (default)\n                • \"NE\" northeast\n                • \"SW\" southwest\n                • \"SE\" southeast\n\n              • width: Window width (in character cells). Minimum of 1.\n              • height: Window height (in character cells). Minimum of 1.\n              • bufpos: Places float relative to buffer text (only when\n                relative=\"win\"). Takes a tuple of zero-indexed [line,\n                column]. `row` and `col` if given are applied relative to this position, else they\n                default to:\n                • `row=1` and `col=0` if `anchor` is \"NW\" or \"NE\"\n                • `row=0` and `col=0` if `anchor` is \"SW\" or \"SE\" (thus\n                  like a tooltip near the buffer text).\n\n              • row: Row position in units of \"screen cell height\", may be\n                fractional.\n              • col: Column position in units of \"screen cell width\", may\n                be fractional.\n              • focusable: Enable focus by user actions (wincmds, mouse\n                events). Defaults to true. Non-focusable windows can be\n                entered by |nvim_set_current_win()|.\n              • external: GUI should display the window as an external\n                top-level window. Currently accepts no other positioning\n                configuration together with this.\n              • zindex: Stacking order. floats with higher `zindex` go on top on floats with lower indices. Must be larger\n                than zero. The following screen elements have hard-coded\n                z-indices:\n                • 100: insert completion popupmenu\n                • 200: message scrollback\n                • 250: cmdline completion popupmenu (when\n                  wildoptions+=pum) The default value for floats are 50.\n                  In general, values below 100 are recommended, unless\n                  there is a good reason to overshadow builtin elements.\n\n              • style: Configure the appearance of the window. Currently\n                only takes one non-empty value:\n                • \"minimal\" Nvim will display the window with many UI\n                  options disabled. This is useful when displaying a\n                  temporary float where the text should not be edited.\n                  Disables 'number', 'relativenumber', 'cursorline',\n                  'cursorcolumn', 'foldcolumn', 'spell' and 'list'\n                  options. 'signcolumn' is changed to `auto` and\n                  'colorcolumn' is cleared. The end-of-buffer region is\n                  hidden by setting `eob` flag of 'fillchars' to a space\n                  char, and clearing the |EndOfBuffer| region in\n                  'winhighlight'.\n\n              • border: Style of (optional) window border. This can either\n                be a string or an array. The string values are\n                • \"none\": No border (default).\n                • \"single\": A single line box.\n                • \"double\": A double line box.\n                • \"rounded\": Like \"single\", but with rounded corners (\"╭\"\n                  etc.).\n                • \"solid\": Adds padding by a single whitespace cell.\n                • \"shadow\": A drop shadow effect by blending with the\n                  background.\n                • If it is an array, it should have a length of eight or\n                  any divisor of eight. The array will specifify the eight\n                  chars building up the border in a clockwise fashion\n                  starting with the top-left corner. As an example, the\n                  double box style could be specified as [ \"╔\", \"═\" ,\"╗\",\n                  \"║\", \"╝\", \"═\", \"╚\", \"║\" ]. If the number of chars are\n                  less than eight, they will be repeated. Thus an ASCII\n                  border could be specified as [ \"/\", \"-\", \"\\\\\", \"|\" ], or\n                  all chars the same as [ \"x\" ]. An empty string can be\n                  used to turn off a specific border, for instance, [ \"\",\n                  \"\", \"\", \">\", \"\", \"\", \"\", \"<\" ] will only make vertical\n                  borders but not horizontal ones. By default,\n                  `FloatBorder` highlight is used, which links to\n                  `WinSeparator` when not defined. It could also be\n                  specified by character: [ {\"+\", \"MyCorner\"}, {\"x\",\n                  \"MyBorder\"} ].\n\n              • noautocmd: If true then no buffer-related autocommand\n                events such as |BufEnter|, |BufLeave| or |BufWinEnter| may\n                fire from calling this function."
+    },
+    "doc": [
+      "Open a new window.",
+      "Currently this is used to open floating and external windows. Floats are\nwindows that are drawn above the split layout, at some anchor position in\nsome other window. Floats can be drawn internally or by external GUI with\nthe |ui-multigrid| extension. External windows are only supported with\nmultigrid GUIs, and are displayed as separate top-level windows.",
+      "For a general overview of floats, see |api-floatwin|.",
+      "Exactly one of `external` and `relative` must be specified. The `width`\nand `height` of the new window must be specified.",
+      "With relative=editor (row=0,col=0) refers to the top-left corner of the\nscreen-grid and (row=Lines-1,col=Columns-1) refers to the bottom-right\ncorner. Fractional values are allowed, but the builtin implementation\n(used by non-multigrid UIs) will always round down to nearest integer.",
+      "Out-of-bounds values, and configurations that make the float not fit\ninside the main editor, are allowed. The builtin implementation truncates\nvalues so floats are fully within the main screen grid. External GUIs\ncould let floats hover outside of the main window like a tooltip, but this\nshould not be used to specify arbitrary WM screen positions.",
+      "Example (Lua): window-relative float >\n    vim.api.nvim_open_win(0, false,\n      {relative='win', row=3, col=3, width=12, height=3})\n\n<",
+      "Example (Lua): buffer-relative float (travels as buffer is scrolled) >\n    vim.api.nvim_open_win(0, false,\n      {relative='win', width=12, height=3, bufpos={100,10}})\n\n<"
+    ],
+    "return": ["Window handle, or 0 on error"],
+    "seealso": []
+  },
+  "nvim_out_write": {
+    "annotations": [],
+    "signature": "nvim_out_write({str})",
+    "parameters": [["String", "str"]],
+    "parameters_doc": { "str": "Message" },
+    "doc": [
+      "Writes a message to the Vim output buffer. Does not append \"\\n\", the\nmessage is buffered (won't display) until a linefeed is written."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_parse_cmd": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_parse_cmd({str}, {opts}, {err})",
+    "parameters": [
+      ["String", "str"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "str": "Command line string to parse. Cannot contain \"\\n\".",
+      "opts": "Optional parameters. Reserved for future use."
+    },
+    "doc": ["Parse command line.", "Doesn't check the validity of command arguments."],
+    "return": [
+      "Dictionary containing command information, with these keys:\n    • cmd: (string) Command name.\n    • range: (array) Command <range>. Can have 0-2 elements depending on\n      how many items the range contains. Has no elements if command\n      doesn't accept a range or if no range was specified, one element if\n      only a single range item was specified and two elements if both\n      range items were specified.\n    • count: (number) Any |<count>| that was supplied to the command. -1\n      if command cannot take a count.\n    • reg: (number) The optional command |<register>|, if specified. Empty\n      string if not specified or if command cannot take a register.\n    • bang: (boolean) Whether command contains a |<bang>| (!) modifier.\n    • args: (array) Command arguments.\n    • addr: (string) Value of |:command-addr|. Uses short name.\n    • nargs: (string) Value of |:command-nargs|.\n    • nextcmd: (string) Next command if there are multiple commands\n      separated by a |:bar|. Empty if there isn't a next command.\n    • magic: (dictionary) Which characters have special meaning in the\n      command arguments.\n      • file: (boolean) The command expands filenames. Which means\n        characters such as \"%\", \"#\" and wildcards are expanded.\n      • bar: (boolean) The \"|\" character is treated as a command separator\n        and the double quote character (\") is treated as the start of a\n        comment.\n\n    • mods: (dictionary) |:command-modifiers|.\n      • filter: (dictionary) |:filter|.\n        • pattern: (string) Filter pattern. Empty string if there is no\n          filter.\n        • force: (boolean) Whether filter is inverted or not.\n\n      • silent: (boolean) |:silent|.\n      • emsg_silent: (boolean) |:silent!|.\n      • unsilent: (boolean) |:unsilent|.\n      • sandbox: (boolean) |:sandbox|.\n      • noautocmd: (boolean) |:noautocmd|.\n      • browse: (boolean) |:browse|.\n      • confirm: (boolean) |:confirm|.\n      • hide: (boolean) |:hide|.\n      • horizontal: (boolean) |:horizontal|.\n      • keepalt: (boolean) |:keepalt|.\n      • keepjumps: (boolean) |:keepjumps|.\n      • keepmarks: (boolean) |:keepmarks|.\n      • keeppatterns: (boolean) |:keeppatterns|.\n      • lockmarks: (boolean) |:lockmarks|.\n      • noswapfile: (boolean) |:noswapfile|.\n      • tab: (integer) |:tab|. -1 when omitted.\n      • verbose: (integer) |:verbose|. -1 when omitted.\n      • vertical: (boolean) |:vertical|.\n      • split: (string) Split modifier string, is an empty string when\n        there's no split modifier. If there is a split modifier it can be\n        one of:\n        • \"aboveleft\": |:aboveleft|.\n        • \"belowright\": |:belowright|.\n        • \"topleft\": |:topleft|.\n        • \"botright\": |:botright|.\n\n\n"
+    ],
+    "seealso": []
+  },
+  "nvim_parse_expression": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_parse_expression({expr}, {flags}, {highlight}, {err})",
+    "parameters": [
+      ["String", "expr"],
+      ["String", "flags"],
+      ["Boolean", "highlight"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "expr": "Expression to parse. Always treated as a single line.",
+      "flags": "Flags:\n                 • \"m\" if multiple expressions in a row are allowed (only\n                   the first one will be parsed),\n                 • \"E\" if EOC tokens are not allowed (determines whether\n                   they will stop parsing process or be recognized as an\n                   operator/space, though also yielding an error).\n                 • \"l\" when needing to start parsing with lvalues for\n                   \":let\" or \":for\". Common flag sets:\n                 • \"m\" to parse like for \":echo\".\n                 • \"E\" to parse like for \"<C-r>=\".\n                 • empty string for \":call\".\n                 • \"lm\" to parse for \":let\".",
+      "highlight": "If true, return value will also include \"highlight\" key\n                 containing array of 4-tuples (arrays) (Integer, Integer,\n                 Integer, String), where first three numbers define the\n                 highlighted region and represent line, starting column\n                 and ending column (latter exclusive: one should highlight\n                 region [start_col, end_col))."
+    },
+    "doc": ["Parse a VimL expression."],
+    "return": [
+      "\n    • AST: top-level dictionary with these keys:\n      • \"error\": Dictionary with error, present only if parser saw some\n        error. Contains the following keys:\n        • \"message\": String, error message in printf format, translated.\n          Must contain exactly one \"%.*s\".\n        • \"arg\": String, error message argument.\n\n      • \"len\": Amount of bytes successfully parsed. With flags equal to \"\"\n        that should be equal to the length of expr string. (“Successfully\n        parsed” here means “participated in AST creation”, not “till the\n        first error”.)\n      • \"ast\": AST, either nil or a dictionary with these keys:\n        • \"type\": node type, one of the value names from ExprASTNodeType\n          stringified without \"kExprNode\" prefix.\n        • \"start\": a pair [line, column] describing where node is\n          \"started\" where \"line\" is always 0 (will not be 0 if you will be\n          using nvim_parse_viml() on e.g. \":let\", but that is not present\n          yet). Both elements are Integers.\n        • \"len\": “length” of the node. This and \"start\" are there for\n          debugging purposes primary (debugging parser and providing debug\n          information).\n        • \"children\": a list of nodes described in top/\"ast\". There always\n          is zero, one or two children, key will not be present if node\n          has no children. Maximum number of children may be found in\n          node_maxchildren array.\n\n\n    • Local values (present only for certain nodes):\n      • \"scope\": a single Integer, specifies scope for \"Option\" and\n        \"PlainIdentifier\" nodes. For \"Option\" it is one of ExprOptScope\n        values, for \"PlainIdentifier\" it is one of ExprVarScope values.\n      • \"ident\": identifier (without scope, if any), present for \"Option\",\n        \"PlainIdentifier\", \"PlainKey\" and \"Environment\" nodes.\n      • \"name\": Integer, register name (one character) or -1. Only present\n        for \"Register\" nodes.\n      • \"cmp_type\": String, comparison type, one of the value names from\n        ExprComparisonType, stringified without \"kExprCmp\" prefix. Only\n        present for \"Comparison\" nodes.\n      • \"ccs_strategy\": String, case comparison strategy, one of the value\n        names from ExprCaseCompareStrategy, stringified without\n        \"kCCStrategy\" prefix. Only present for \"Comparison\" nodes.\n      • \"augmentation\": String, augmentation type for \"Assignment\" nodes.\n        Is either an empty string, \"Add\", \"Subtract\" or \"Concat\" for \"=\",\n        \"+=\", \"-=\" or \".=\" respectively.\n      • \"invert\": Boolean, true if result of comparison needs to be\n        inverted. Only present for \"Comparison\" nodes.\n      • \"ivalue\": Integer, integer value for \"Integer\" nodes.\n      • \"fvalue\": Float, floating-point value for \"Float\" nodes.\n      • \"svalue\": String, value for \"SingleQuotedString\" and\n        \"DoubleQuotedString\" nodes.\n\n"
+    ],
+    "seealso": []
+  },
+  "nvim_paste": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_paste({data}, {crlf}, {phase}, {err})",
+    "parameters": [
+      ["String", "data"],
+      ["Boolean", "crlf"],
+      ["Integer", "phase"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "data": "Multiline input. May be binary (containing NUL bytes).",
+      "crlf": "Also break lines at CR and CRLF.",
+      "phase": "-1: paste in a single call (i.e. without streaming). To\n             \"stream\" a paste, call `nvim_paste` sequentially with these `phase` values:\n             • 1: starts the paste (exactly once)\n             • 2: continues the paste (zero or more times)\n             • 3: ends the paste (exactly once)"
+    },
+    "doc": [
+      "Pastes at cursor, in any mode.",
+      "Invokes the `vim.paste` handler, which handles each mode appropriately.\nSets redo/undo. Faster than |nvim_input()|. Lines break at LF (\"\\n\").",
+      "Errors ('nomodifiable', `vim.paste()` failure, …) are reflected in `err`\nbut do not affect the return value (which is strictly decided by\n`vim.paste()`). On error, subsequent calls are ignored (\"drained\") until\nthe next paste is initiated (phase 1 or -1)."
+    ],
+    "return": [
+      "\n    • true: Client may continue pasting.\n    • false: Client must cancel the paste.\n"
+    ],
+    "seealso": []
+  },
+  "nvim_put": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_put({lines}, {type}, {after}, {follow}, {err})",
+    "parameters": [
+      ["ArrayOf(String)", "lines"],
+      ["String", "type"],
+      ["Boolean", "after"],
+      ["Boolean", "follow"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "lines": "|readfile()|-style list of lines. |channel-lines|",
+      "type": "Edit behavior: any |getregtype()| result, or:\n              • \"b\" |blockwise-visual| mode (may include width, e.g. \"b3\")\n              • \"c\" |charwise| mode\n              • \"l\" |linewise| mode\n              • \"\" guess by contents, see |setreg()|",
+      "after": "If true insert after cursor (like |p|), or before (like\n              |P|).",
+      "follow": "If true place cursor at end of inserted text."
+    },
+    "doc": [
+      "Puts text at cursor, in any mode.",
+      "Compare |:put| and |p| which are always linewise."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_replace_termcodes": {
+    "annotations": [],
+    "signature": "nvim_replace_termcodes({str}, {from_part}, {do_lt}, {special})",
+    "parameters": [
+      ["String", "str"],
+      ["Boolean", "from_part"],
+      ["Boolean", "do_lt"],
+      ["Boolean", "special"]
+    ],
+    "parameters_doc": {
+      "str": "String to be converted.",
+      "from_part": "Legacy Vim parameter. Usually true.",
+      "do_lt": "Also translate <lt>. Ignored if `special` is false.",
+      "special": "Replace |keycodes|, e.g. <CR> becomes a \"\\r\" char."
+    },
+    "doc": [
+      "Replaces terminal codes and |keycodes| (<CR>, <Esc>, ...) in a string with\nthe internal representation."
+    ],
+    "return": [],
+    "seealso": ["replace_termcodes", "cpoptions"]
+  },
+  "nvim_select_popupmenu_item": {
+    "annotations": [],
+    "signature": "nvim_select_popupmenu_item({item}, {insert}, {finish}, {opts}, {err})",
+    "parameters": [
+      ["Integer", "item"],
+      ["Boolean", "insert"],
+      ["Boolean", "finish"],
+      ["Dictionary", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "item": "Index (zero-based) of the item to select. Value of -1\n              selects nothing and restores the original text.",
+      "insert": "Whether the selection should be inserted in the buffer.",
+      "finish": "Finish the completion and dismiss the popupmenu. Implies\n              `insert`.",
+      "opts": "Optional parameters. Reserved for future use."
+    },
+    "doc": [
+      "Selects an item in the completion popupmenu.",
+      "If |ins-completion| is not active this API call is silently ignored.\nUseful for an external UI using |ui-popupmenu| to control the popupmenu\nwith the mouse. Can also be used in a mapping; use <cmd> |:map-cmd| to\nensure the mapping doesn't end completion mode."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_client_info": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_set_client_info({name}, {version}, {type}, {methods}, {attributes}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Dictionary", "version"],
+      ["String", "type"],
+      ["Dictionary", "methods"],
+      ["Dictionary", "attributes"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "name": "Short name for the connected client",
+      "version": "Dictionary describing the version, with these (optional)\n                  keys:\n                  • \"major\" major version (defaults to 0 if not set, for\n                    no release yet)\n                  • \"minor\" minor version\n                  • \"patch\" patch number\n                  • \"prerelease\" string describing a prerelease, like\n                    \"dev\" or \"beta1\"\n                  • \"commit\" hash or similar identifier of commit",
+      "type": "Must be one of the following values. Client libraries\n                  should default to \"remote\" unless overridden by the\n                  user.\n                  • \"remote\" remote client connected to Nvim.\n                  • \"ui\" gui frontend\n                  • \"embedder\" application using Nvim as a component (for\n                    example, IDE/editor implementing a vim mode).\n                  • \"host\" plugin host, typically started by nvim\n                  • \"plugin\" single plugin, started by nvim",
+      "methods": "Builtin methods in the client. For a host, this does not\n                  include plugin methods which will be discovered later.\n                  The key should be the method name, the values are dicts\n                  with these (optional) keys (more keys may be added in\n                  future versions of Nvim, thus unknown keys are ignored.\n                  Clients must only use keys defined in this or later\n                  versions of Nvim):\n                  • \"async\" if true, send as a notification. If false or\n                    unspecified, use a blocking request\n                  • \"nargs\" Number of arguments. Could be a single integer\n                    or an array of two integers, minimum and maximum\n                    inclusive.",
+      "attributes": "Arbitrary string:string map of informal client\n                  properties. Suggested keys:\n                  • \"website\": Client homepage URL (e.g. GitHub\n                    repository)\n                  • \"license\": License description (\"Apache 2\", \"GPLv3\",\n                    \"MIT\", …)\n                  • \"logo\": URI or path to image, preferably small logo or\n                    icon. .png or .svg format is preferred."
+    },
+    "doc": [
+      "Self-identifies the client.",
+      "The client/plugin/application should call this after connecting, to\nprovide hints about its identity and purpose, for debugging and\norchestration.",
+      "Can be called more than once; the caller should merge old info if\nappropriate. Example: library first identifies the channel, then a plugin\nusing that library later identifies itself.",
+      "\nNote:\n    \"Something is better than nothing\". You don't need to include all the\n    fields.\n"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_current_buf": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_set_current_buf({buffer}, {err})",
+    "parameters": [
+      ["Buffer", "buffer"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "buffer": "Buffer handle" },
+    "doc": ["Sets the current buffer."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_current_dir": {
+    "annotations": [],
+    "signature": "nvim_set_current_dir({dir}, {err})",
+    "parameters": [
+      ["String", "dir"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "dir": "Directory path" },
+    "doc": ["Changes the global working directory."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_current_line": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_set_current_line({line}, {err})",
+    "parameters": [
+      ["String", "line"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "line": "Line contents" },
+    "doc": ["Sets the current line."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_current_tabpage": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_set_current_tabpage({tabpage}, {err})",
+    "parameters": [
+      ["Tabpage", "tabpage"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "tabpage": "Tabpage handle" },
+    "doc": ["Sets the current tabpage."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_current_win": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_set_current_win({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle" },
+    "doc": ["Sets the current window."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_decoration_provider": {
+    "annotations": ["|vim.api| only"],
+    "signature": "nvim_set_decoration_provider({ns_id}, {opts}, {err})",
+    "parameters": [
+      ["Integer", "ns_id"],
+      ["Dict(set_decoration_provider) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "ns_id": "Namespace id from |nvim_create_namespace()|",
+      "opts": "Table of callbacks:\n             • on_start: called first on each screen redraw [\"start\",\n               tick]\n             • on_buf: called for each buffer being redrawn (before window\n               callbacks) [\"buf\", bufnr, tick]\n             • on_win: called when starting to redraw a specific window.\n               [\"win\", winid, bufnr, topline, botline_guess]\n             • on_line: called for each buffer line being redrawn. (The\n               interaction with fold lines is subject to change) [\"win\",\n               winid, bufnr, row]\n             • on_end: called at the end of a redraw cycle [\"end\", tick]"
+    },
+    "doc": [
+      "Set or change decoration provider for a namespace",
+      "This is a very general purpose interface for having lua callbacks being\ntriggered during the redraw code.",
+      "The expected usage is to set extmarks for the currently redrawn buffer.\n|nvim_buf_set_extmark| can be called to add marks on a per-window or\nper-lines basis. Use the `ephemeral` key to only use the mark for the\ncurrent screen redraw (the callback will be called again for the next\nredraw ).",
+      "Note: this function should not be called often. Rather, the callbacks\nthemselves can be used to throttle unneeded callbacks. the `on_start`\ncallback can return `false` to disable the provider until the next redraw.\nSimilarly, return `false` in `on_win` will skip the `on_lines` calls for\nthat window (but any extmarks set in `on_win` will still be used). A\nplugin managing multiple sources of decoration should ideally only set one\nprovider, and merge the sources internally. You can use multiple `ns_id`\nfor the extmarks set/modified inside the callback anyway.",
+      "Note: doing anything other than setting extmarks is considered\nexperimental. Doing things like changing options are not expliticly\nforbidden, but is likely to have unexpected consequences (such as 100% CPU\nconsumption). doing `vim.rpcnotify` should be OK, but `vim.rpcrequest` is\nquite dubious for the moment."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_hl": {
+    "annotations": [],
+    "signature": "nvim_set_hl({ns_id}, {name}, {val}, {err})",
+    "parameters": [
+      ["Integer", "ns_id"],
+      ["String", "name"],
+      ["Dict(highlight) *", "val"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "ns_id": "Namespace id for this highlight |nvim_create_namespace()|.\n             Use 0 to set a highlight group globally |:highlight|.",
+      "name": "Highlight group name, e.g. \"ErrorMsg\"",
+      "val": "Highlight definition map, accepts the following keys:\n             • fg (or foreground): color name or \"#RRGGBB\", see note.\n             • bg (or background): color name or \"#RRGGBB\", see note.\n             • sp (or special): color name or \"#RRGGBB\"\n             • blend: integer between 0 and 100\n             • bold: boolean\n             • standout: boolean\n             • underline: boolean\n             • undercurl: boolean\n             • underdouble: boolean\n             • underdotted: boolean\n             • underdashed: boolean\n             • strikethrough: boolean\n             • italic: boolean\n             • reverse: boolean\n             • nocombine: boolean\n             • link: name of another highlight group to link to, see\n               |:hi-link|.\n             • default: Don't override existing definition |:hi-default|\n             • ctermfg: Sets foreground of cterm color |highlight-ctermfg|\n             • ctermbg: Sets background of cterm color |highlight-ctermbg|\n             • cterm: cterm attribute map, like |highlight-args|. If not\n               set, cterm attributes will match those from the attribute\n               map documented above."
+    },
+    "doc": [
+      "Sets a highlight group.",
+      "\nNote:\n    Unlike the `:highlight` command which can update a highlight group,\n    this function completely replaces the definition. For example:\n    `nvim_set_hl(0, 'Visual', {})` will clear the highlight group\n    'Visual'.\n\nNote:\n    The fg and bg keys also accept the string values `\"fg\"` or `\"bg\"`\n    which act as aliases to the corresponding foreground and background\n    values of the Normal group. If the Normal group has not been defined,\n    using these values results in an error.\n"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_hl_ns": {
+    "annotations": [],
+    "signature": "nvim_set_hl_ns({ns_id}, {err})",
+    "parameters": [
+      ["Integer", "ns_id"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "ns_id": "the namespace to use" },
+    "doc": [
+      "Set active namespace for highlights. This can be set for a single window,\nsee |nvim_win_set_hl_ns|."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_hl_ns_fast": {
+    "annotations": ["|api-fast|"],
+    "signature": "nvim_set_hl_ns_fast({ns_id}, {err})",
+    "parameters": [
+      ["Integer", "ns_id"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "ns_id": "the namespace to activate" },
+    "doc": [
+      "Set active namespace for highlights while redrawing.",
+      "This function meant to be called while redrawing, primarily from\n|nvim_set_decoration_provider| on_win and on_line callbacks, which are\nallowed to change the namespace during a redraw cycle."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_keymap": {
+    "annotations": [],
+    "signature": "nvim_set_keymap({mode}, {lhs}, {rhs}, {opts}, {err})",
+    "parameters": [
+      ["String", "mode"],
+      ["String", "lhs"],
+      ["String", "rhs"],
+      ["Dict(keymap) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "mode": "Mode short-name (map command prefix: \"n\", \"i\", \"v\", \"x\", …) or\n            \"!\" for |:map!|, or empty string for |:map|.",
+      "lhs": "Left-hand-side |{lhs}| of the mapping.",
+      "rhs": "Right-hand-side |{rhs}| of the mapping.",
+      "opts": "Optional parameters map: keys are |:map-arguments|, values are\n            booleans (default false). Accepts all |:map-arguments| as keys\n            excluding |<buffer>| but including |noremap| and \"desc\".\n            Unknown key is an error. \"desc\" can be used to give a\n            description to the mapping. When called from Lua, also accepts\n            a \"callback\" key that takes a Lua function to call when the\n            mapping is executed. When \"expr\" is true, \"replace_keycodes\"\n            (boolean) can be used to replace keycodes in the resulting\n            string (see |nvim_replace_termcodes()|), and a Lua callback\n            returning `nil` is equivalent to returning an empty string."
+    },
+    "doc": [
+      "Sets a global |mapping| for the given mode.",
+      "To set a buffer-local mapping, use |nvim_buf_set_keymap()|.",
+      "Unlike |:map|, leading/trailing whitespace is accepted as part of the\n{lhs} or {rhs}. Empty {rhs} is |<Nop>|. |keycodes| are replaced as usual.",
+      "Example: >\n    call nvim_set_keymap('n', ' <NL>', '', {'nowait': v:true})\n\n<",
+      "is equivalent to: >\n    nmap <nowait> <Space><NL> <Nop>\n\n<"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_option": {
+    "annotations": [],
+    "signature": "nvim_set_option({name}, {value}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Option name", "value": "New option value" },
+    "doc": ["Sets the global value of an option."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_option_value": {
+    "annotations": [],
+    "signature": "nvim_set_option_value({name}, {value}, {opts}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Object", "value"],
+      ["Dict(option) *", "opts"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "name": "Option name",
+      "value": "New option value",
+      "opts": "Optional parameters\n             • scope: One of 'global' or 'local'. Analogous to\n               |:setglobal| and |:setlocal|, respectively.\n             • win: |window-ID|. Used for setting window local option.\n             • buf: Buffer number. Used for setting buffer local option."
+    },
+    "doc": [
+      "Sets the value of an option. The behavior of this function matches that of\n|:set|: for global-local options, both the global and local value are set\nunless otherwise specified with {scope}.",
+      "Note the options {win} and {buf} cannot be used together."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_var": {
+    "annotations": [],
+    "signature": "nvim_set_var({name}, {value}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Variable name", "value": "Variable value" },
+    "doc": ["Sets a global (g:) variable."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_set_vvar": {
+    "annotations": [],
+    "signature": "nvim_set_vvar({name}, {value}, {err})",
+    "parameters": [
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "name": "Variable name", "value": "Variable value" },
+    "doc": ["Sets a v: variable, if it is not readonly."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_strwidth": {
+    "annotations": [],
+    "signature": "nvim_strwidth({text}, {err})",
+    "parameters": [
+      ["String", "text"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "text": "Some text" },
+    "doc": [
+      "Calculates the number of display cells occupied by `text`. Control\ncharacters including <Tab> count as one cell."
+    ],
+    "return": ["Number of cells"],
+    "seealso": []
+  },
+  "nvim_subscribe": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_subscribe({event})",
+    "parameters": [["String", "event"]],
+    "parameters_doc": { "event": "Event type string" },
+    "doc": ["Subscribes to event broadcasts."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_tabpage_del_var": {
+    "annotations": [],
+    "signature": "nvim_tabpage_del_var({tabpage}, {name}, {err})",
+    "parameters": [
+      ["Tabpage", "tabpage"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "tabpage": "Tabpage handle, or 0 for current tabpage",
+      "name": "Variable name"
+    },
+    "doc": ["Removes a tab-scoped (t:) variable"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_tabpage_get_number": {
+    "annotations": [],
+    "signature": "nvim_tabpage_get_number({tabpage}, {err})",
+    "parameters": [
+      ["Tabpage", "tabpage"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "tabpage": "Tabpage handle, or 0 for current tabpage" },
+    "doc": ["Gets the tabpage number"],
+    "return": ["Tabpage number"],
+    "seealso": []
+  },
+  "nvim_tabpage_get_var": {
+    "annotations": [],
+    "signature": "nvim_tabpage_get_var({tabpage}, {name}, {err})",
+    "parameters": [
+      ["Tabpage", "tabpage"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "tabpage": "Tabpage handle, or 0 for current tabpage",
+      "name": "Variable name"
+    },
+    "doc": ["Gets a tab-scoped (t:) variable"],
+    "return": ["Variable value"],
+    "seealso": []
+  },
+  "nvim_tabpage_get_win": {
+    "annotations": [],
+    "signature": "nvim_tabpage_get_win({tabpage}, {err})",
+    "parameters": [
+      ["Tabpage", "tabpage"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "tabpage": "Tabpage handle, or 0 for current tabpage" },
+    "doc": ["Gets the current window in a tabpage"],
+    "return": ["Window handle"],
+    "seealso": []
+  },
+  "nvim_tabpage_is_valid": {
+    "annotations": [],
+    "signature": "nvim_tabpage_is_valid({tabpage})",
+    "parameters": [["Tabpage", "tabpage"]],
+    "parameters_doc": { "tabpage": "Tabpage handle, or 0 for current tabpage" },
+    "doc": ["Checks if a tabpage is valid"],
+    "return": ["true if the tabpage is valid, false otherwise"],
+    "seealso": []
+  },
+  "nvim_tabpage_list_wins": {
+    "annotations": [],
+    "signature": "nvim_tabpage_list_wins({tabpage}, {err})",
+    "parameters": [
+      ["Tabpage", "tabpage"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "tabpage": "Tabpage handle, or 0 for current tabpage" },
+    "doc": ["Gets the windows in a tabpage"],
+    "return": ["List of windows in `tabpage`"],
+    "seealso": []
+  },
+  "nvim_tabpage_set_var": {
+    "annotations": [],
+    "signature": "nvim_tabpage_set_var({tabpage}, {name}, {value}, {err})",
+    "parameters": [
+      ["Tabpage", "tabpage"],
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "tabpage": "Tabpage handle, or 0 for current tabpage",
+      "name": "Variable name",
+      "value": "Variable value"
+    },
+    "doc": ["Sets a tab-scoped (t:) variable"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_ui_attach": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_ui_attach({width}, {height}, {options}, {err})",
+    "parameters": [
+      ["Integer", "width"],
+      ["Integer", "height"],
+      ["Dictionary", "options"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "width": "Requested screen columns",
+      "height": "Requested screen rows",
+      "options": "|ui-option| map"
+    },
+    "doc": [
+      "Activates UI events on the channel.",
+      "Entry point of all UI clients. Allows |--embed| to continue startup.\nImplies that the client is ready to show the UI. Adds the client to the\nlist of UIs. |nvim_list_uis()|",
+      "\nNote:\n    If multiple UI clients are attached, the global screen dimensions\n    degrade to the smallest client. E.g. if client A requests 80x40 but\n    client B requests 200x100, the global screen has size 80x40.\n"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_ui_detach": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_ui_detach({err})",
+    "parameters": [["Error *", "err"]],
+    "parameters_doc": {},
+    "doc": [
+      "Deactivates UI events on the channel.",
+      "Removes the client from the list of UIs. |nvim_list_uis()|"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_ui_pum_set_bounds": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_ui_pum_set_bounds({width}, {height}, {row}, {col}, {err})",
+    "parameters": [
+      ["Float", "width"],
+      ["Float", "height"],
+      ["Float", "row"],
+      ["Float", "col"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "width": "Popupmenu width.",
+      "height": "Popupmenu height.",
+      "row": "Popupmenu row.",
+      "col": "Popupmenu height."
+    },
+    "doc": [
+      "Tells Nvim the geometry of the popumenu, to align floating windows with an\nexternal popup menu.",
+      "Note that this method is not to be confused with\n|nvim_ui_pum_set_height()|, which sets the number of visible items in the\npopup menu, while this function sets the bounding box of the popup menu,\nincluding visual elements such as borders and sliders. Floats need not use\nthe same font size, nor be anchored to exact grid corners, so one can set\nfloating-point numbers to the popup menu geometry."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_ui_pum_set_height": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_ui_pum_set_height({height}, {err})",
+    "parameters": [
+      ["Integer", "height"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "height": "Popupmenu height, must be greater than zero." },
+    "doc": [
+      "Tells Nvim the number of elements displaying in the popumenu, to decide\n<PageUp> and <PageDown> movement."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_ui_set_option": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_ui_set_option({name}, {value}, {error})",
+    "parameters": [
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "error"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_ui_try_resize": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_ui_try_resize({width}, {height}, {err})",
+    "parameters": [
+      ["Integer", "width"],
+      ["Integer", "height"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {},
+    "doc": [],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_ui_try_resize_grid": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_ui_try_resize_grid({grid}, {width}, {height}, {err})",
+    "parameters": [
+      ["Integer", "grid"],
+      ["Integer", "width"],
+      ["Integer", "height"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "grid": "The handle of the grid to be changed.",
+      "width": "The new requested width.",
+      "height": "The new requested height."
+    },
+    "doc": [
+      "Tell Nvim to resize a grid. Triggers a grid_resize event with the\nrequested grid size or the maximum size if it exceeds size limits.",
+      "On invalid grid handle, fails with error."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_unsubscribe": {
+    "annotations": ["|RPC| only"],
+    "signature": "nvim_unsubscribe({event})",
+    "parameters": [["String", "event"]],
+    "parameters_doc": { "event": "Event type string" },
+    "doc": ["Unsubscribes to event broadcasts."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_call": {
+    "annotations": ["|vim.api| only"],
+    "signature": "nvim_win_call({window}, {fun}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["LuaRef", "fun"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "fun": "Function to call inside the window (currently lua callable\n              only)"
+    },
+    "doc": ["Calls a function with window as temporary current window."],
+    "return": [
+      "Return value of function. NB: will deepcopy lua values currently, use\n    upvalues to send lua references in and out."
+    ],
+    "seealso": ["|win_execute()|", "|nvim_buf_call()|"]
+  },
+  "nvim_win_close": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_win_close({window}, {force}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Boolean", "force"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "force": "Behave like `:close!` The last window of a buffer with\n              unwritten changes can be closed. The buffer will become\n              hidden, even if 'hidden' is not set."
+    },
+    "doc": ["Closes the window (like |:close| with a |window-ID|)."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_del_var": {
+    "annotations": [],
+    "signature": "nvim_win_del_var({window}, {name}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "name": "Variable name"
+    },
+    "doc": ["Removes a window-scoped (w:) variable"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_get_buf": {
+    "annotations": [],
+    "signature": "nvim_win_get_buf({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Gets the current buffer in a window"],
+    "return": ["Buffer handle"],
+    "seealso": []
+  },
+  "nvim_win_get_config": {
+    "annotations": [],
+    "signature": "nvim_win_get_config({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": [
+      "Gets window configuration.",
+      "The returned value may be given to |nvim_open_win()|.",
+      "`relative` is empty for normal windows."
+    ],
+    "return": ["Map defining the window configuration, see |nvim_open_win()|"],
+    "seealso": []
+  },
+  "nvim_win_get_cursor": {
+    "annotations": [],
+    "signature": "nvim_win_get_cursor({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Gets the (1,0)-indexed cursor position in the window. |api-indexing|"],
+    "return": ["(row, col) tuple"],
+    "seealso": []
+  },
+  "nvim_win_get_height": {
+    "annotations": [],
+    "signature": "nvim_win_get_height({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Gets the window height"],
+    "return": ["Height as a count of rows"],
+    "seealso": []
+  },
+  "nvim_win_get_number": {
+    "annotations": [],
+    "signature": "nvim_win_get_number({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Gets the window number"],
+    "return": ["Window number"],
+    "seealso": []
+  },
+  "nvim_win_get_option": {
+    "annotations": [],
+    "signature": "nvim_win_get_option({window}, {name}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "name": "Option name"
+    },
+    "doc": ["Gets a window option value"],
+    "return": ["Option value"],
+    "seealso": []
+  },
+  "nvim_win_get_position": {
+    "annotations": [],
+    "signature": "nvim_win_get_position({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Gets the window position in display cells. First position is zero."],
+    "return": ["(row, col) tuple with the window position"],
+    "seealso": []
+  },
+  "nvim_win_get_tabpage": {
+    "annotations": [],
+    "signature": "nvim_win_get_tabpage({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Gets the window tabpage"],
+    "return": ["Tabpage that contains the window"],
+    "seealso": []
+  },
+  "nvim_win_get_var": {
+    "annotations": [],
+    "signature": "nvim_win_get_var({window}, {name}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["String", "name"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "name": "Variable name"
+    },
+    "doc": ["Gets a window-scoped (w:) variable"],
+    "return": ["Variable value"],
+    "seealso": []
+  },
+  "nvim_win_get_width": {
+    "annotations": [],
+    "signature": "nvim_win_get_width({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Gets the window width"],
+    "return": ["Width as a count of columns"],
+    "seealso": []
+  },
+  "nvim_win_hide": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_win_hide({window}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": [
+      "Closes the window and hide the buffer it contains (like |:hide| with a\n|window-ID|).",
+      "Like |:hide| the buffer becomes hidden unless another window is editing\nit, or 'bufhidden' is `unload`, `delete` or `wipe` as opposed to |:close|\nor |nvim_win_close|, which will close the buffer."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_is_valid": {
+    "annotations": [],
+    "signature": "nvim_win_is_valid({window})",
+    "parameters": [["Window", "window"]],
+    "parameters_doc": { "window": "Window handle, or 0 for current window" },
+    "doc": ["Checks if a window is valid"],
+    "return": ["true if the window is valid, false otherwise"],
+    "seealso": []
+  },
+  "nvim_win_set_buf": {
+    "annotations": ["not allowed when |textlock| is active"],
+    "signature": "nvim_win_set_buf({window}, {buffer}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Buffer", "buffer"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "buffer": "Buffer handle"
+    },
+    "doc": ["Sets the current buffer in a window, without side effects"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_set_config": {
+    "annotations": [],
+    "signature": "nvim_win_set_config({window}, {config}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Dict(float_config) *", "config"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "config": "Map defining the window configuration, see |nvim_open_win()|"
+    },
+    "doc": [
+      "Configures window layout. Currently only for floating and external windows\n(including changing a split window to those layouts).",
+      "When reconfiguring a floating window, absent option keys will not be\nchanged. `row`/`col` and `relative` must be reconfigured together."
+    ],
+    "return": [],
+    "seealso": ["|nvim_open_win()|"]
+  },
+  "nvim_win_set_cursor": {
+    "annotations": [],
+    "signature": "nvim_win_set_cursor({window}, {pos}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["ArrayOf(Integer, 2)", "pos"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "pos": "(row, col) tuple representing the new position"
+    },
+    "doc": [
+      "Sets the (1,0)-indexed cursor position in the window. |api-indexing| This\nscrolls the window even if it is not the current one."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_set_height": {
+    "annotations": [],
+    "signature": "nvim_win_set_height({window}, {height}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Integer", "height"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "height": "Height as a count of rows"
+    },
+    "doc": ["Sets the window height."],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_set_hl_ns": {
+    "annotations": [],
+    "signature": "nvim_win_set_hl_ns({window}, {ns_id}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Integer", "ns_id"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": { "ns_id": "the namespace to use" },
+    "doc": [
+      "Set highlight namespace for a window. This will use highlights defined in\nthis namespace, but fall back to global highlights (ns=0) when missing.",
+      "This takes predecence over the 'winhighlight' option."
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_set_option": {
+    "annotations": [],
+    "signature": "nvim_win_set_option({window}, {name}, {value}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "name": "Option name",
+      "value": "Option value"
+    },
+    "doc": [
+      "Sets a window option value. Passing `nil` as value deletes the option\n(only works if there's a global fallback)"
+    ],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_set_var": {
+    "annotations": [],
+    "signature": "nvim_win_set_var({window}, {name}, {value}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["String", "name"],
+      ["Object", "value"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "name": "Variable name",
+      "value": "Variable value"
+    },
+    "doc": ["Sets a window-scoped (w:) variable"],
+    "return": [],
+    "seealso": []
+  },
+  "nvim_win_set_width": {
+    "annotations": [],
+    "signature": "nvim_win_set_width({window}, {width}, {err})",
+    "parameters": [
+      ["Window", "window"],
+      ["Integer", "width"],
+      ["Error *", "err"]
+    ],
+    "parameters_doc": {
+      "window": "Window handle, or 0 for current window",
+      "width": "Width as a count of columns"
+    },
+    "doc": [
+      "Sets the window width. This will only succeed if the screen is split\nvertically."
+    ],
+    "return": [],
+    "seealso": []
+  }
+}
