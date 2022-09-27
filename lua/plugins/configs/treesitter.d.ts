@@ -1,2 +1,2 @@
 /** @noSelfInFile */
-declare const has_treesitter: boolean, treesitter: string | NeovimPluginSetup;
+declare const has_treesitter: boolean, treesitter: any;

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/naming-convention */
-/** @noSelfInFile */
 
 export const dump = (...lua_table: any[]) => {
   print(unpack(vim.tbl_map(vim.inspect, lua_table)))

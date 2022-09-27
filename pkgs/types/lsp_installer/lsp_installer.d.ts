@@ -1,5 +1,3 @@
-/** @noSelfInFile */
-
 /** @noSelf */
 declare module 'nvim-lsp-installer' {
   export const get_server: (

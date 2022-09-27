@@ -1,6 +1,11 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
-has_lspconfig, lspconfig = pcall(require, "lspconfig")
-if has_lspconfig then
+local ____exports = {}
+____exports.default = function()
+    local has_lspconfig, lspconfig = pcall(require, "lspconfig")
+    if not has_lspconfig then
+        return
+    end
+    require("plugins.ui.lsp")
     local function on_attach(client, bufnr)
         if vim.version().minor > 7 then
             client.server_capabilities.documentFormattingProvider = false
@@ -9,9 +14,10 @@ if has_lspconfig then
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
         end
-        if client.server_capabilities.signatureHelpProvider then
-        end
         require("plugins.load_mapings").load_mapings("lspconfig", {scope = {type = "buffer", buffer = bufnr}})
+        if client.server_capabilities.signatureHelpProvider then
+            require("plugins.ui.signature").setup(client)
+        end
         local caps = client.server_capabilities
         if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
             vim.cmd("autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.buf.semantic_tokens_full()")
@@ -50,3 +56,4 @@ if has_lspconfig then
     lspconfig.cssls.setup({on_attach = on_attach, capabilities = capabilities})
     lspconfig.rust_analyzer.setup({on_attach = on_attach, capabilities = capabilities})
 end
+return ____exports

@@ -1,7 +1,7 @@
-/** @noSelfInFile */
 /**
  * @see https://github.com/NvChad/NvChad/blob/main/init.lua
  */
+
 vim.defer_fn(() => {
   pcall(require, 'impatient')
 }, 0)
@@ -11,6 +11,12 @@ import './options'
 import './better_move'
 import './vscode'
 import './neovide'
+import './disable_mappings'
+
+// add binaries installed by mason.nvim to path
+const is_windows = (vim as any).loop.os_uname().sysname == 'Windows_NT'
+;(vim as any).env.PATH =
+  (vim as any).env.PATH + (is_windows ? ';' : ':') + vim.fn.stdpath('data') + '/mason/bin'
 
 // disable some builtin vim plugins
 const disabled_builtin_plugins = [

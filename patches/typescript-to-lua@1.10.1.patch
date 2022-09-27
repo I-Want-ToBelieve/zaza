@@ -1,3 +1,45 @@
+diff --git a/dist/transformation/utils/function-context.js b/dist/transformation/utils/function-context.js
+index 353f73dbbe47f2c7c9e26a7a4d3fb85e5fe3f723..0184bdde36715342e3976acca236a28272ea66d0 100644
+--- a/dist/transformation/utils/function-context.js
++++ b/dist/transformation/utils/function-context.js
+@@ -32,6 +32,7 @@ function getExplicitThisParameter(signatureDeclaration) {
+         return param;
+     }
+ }
++exports.getExplicitThisParameter = getExplicitThisParameter
+ const signatureDeclarationContextTypes = new WeakMap();
+ function getDeclarationContextType(context, signatureDeclaration) {
+     const known = signatureDeclarationContextTypes.get(signatureDeclaration);
+diff --git a/dist/transformation/visitors/call.js b/dist/transformation/visitors/call.js
+index 8b845dce97dc70a90b611be1d172bea19ad18f65..b76f9f106b316a48d983a7fee3e27f0982fe9d70 100644
+--- a/dist/transformation/visitors/call.js
++++ b/dist/transformation/visitors/call.js
+@@ -120,7 +120,7 @@ function transformPropertyCall(context, node, calledMethod) {
+         return lua.createCallExpression(context.transformExpression(node.expression), parameters, node);
+     }
+     const signatureDeclaration = signature === null || signature === void 0 ? void 0 : signature.getDeclaration();
+-    if (!signatureDeclaration || (0, function_context_1.getDeclarationContextType)(context, signatureDeclaration) !== function_context_1.ContextType.Void) {
++    if (signatureDeclaration && (0, function_context_1.getDeclarationContextType)(context, signatureDeclaration) !== function_context_1.ContextType.Void) {
+         // table:name()
+         return transformContextualCallExpression(context, node, node.arguments, signature);
+     }
+diff --git a/dist/transformation/visitors/function.js b/dist/transformation/visitors/function.js
+index f6acbf3710e4fa9ce4c00cb1b0256c20aca8e4da..4b27a09909af9526da04d63fe007b809ee349069 100644
+--- a/dist/transformation/visitors/function.js
++++ b/dist/transformation/visitors/function.js
+@@ -154,9 +154,11 @@ function transformParameters(context, parameters, functionContext) {
+ exports.transformParameters = transformParameters;
+ function transformFunctionToExpression(context, node) {
+     (0, utils_1.assert)(node.body);
++       const signature = context.checker.getResolvedSignature(node);
++    const signatureDeclaration = signature === null || signature === void 0 ? void 0 : signature.getDeclaration();
+     const type = context.checker.getTypeAtLocation(node);
+     let functionContext;
+-    if ((0, function_context_1.getFunctionContextType)(context, type) !== function_context_1.ContextType.Void) {
++    if (signatureDeclaration && (0, function_context_1.getDeclarationContextType)(context, signatureDeclaration) !== function_context_1.ContextType.Void && !!(0, function_context_1.getExplicitThisParameter)(signatureDeclaration)) {
+         if (ts.isArrowFunction(node)) {
+             // dummy context for arrow functions with parameters
+             if (node.parameters.length > 0) {
 diff --git a/dist/transpilation/resolve.js b/dist/transpilation/resolve.js
 index 5a0366f3b4943578f7e52c170573e1f50b7fc3f8..b94af99aaee2211cbd205756b7396e48c0902262 100644
 --- a/dist/transpilation/resolve.js

@@ -13,7 +13,7 @@ ____exports.telescope = {n = {
     ["<leader>pt"] = {"<cmd> Telescope terms <CR>", "pick hidden term"},
     ["<leader>th"] = {"<cmd> Telescope themes <CR>", "nvchad themes"}
 }}
-____exports.fterm = {n = {["<A-t>"] = {"<cmd>lua require(\"FTerm\").toggle()<CR>", "pick hidden term"}}, t = {["<A-t>"] = {"<C-\\><C-n><cmd>lua require(\"FTerm\").toggle()<CR>", "nvchad themes"}}}
+____exports.fterm = {n = {["<A-t>"] = {"<cmd>lua require(\"FTerm\").toggle()<CR>", "pick hidden term"}, ["<C-@>"] = {"<cmd>lua require(\"FTerm\").toggle()<CR>", "pick hidden term"}}, t = {["<A-t>"] = {"<C-\\><C-n><cmd>lua require(\"FTerm\").toggle()<CR>", "nvchad themes"}, ["<C-@>"] = {"<C-\\><C-n><cmd>lua require(\"FTerm\").toggle()<CR>", "nvchad themes"}}}
 ____exports.lspconfig = {n = {
     gD = {
         function()
@@ -27,7 +27,7 @@ ____exports.lspconfig = {n = {
         end,
         "lsp definition"
     },
-    K = {
+    H = {
         function()
             vim.lsp.buf.hover()
         end,
@@ -53,6 +53,7 @@ ____exports.lspconfig = {n = {
     },
     ["<leader>ra"] = {
         function()
+            require("plugins.ui.renamer").open()
         end,
         "lsp rename"
     },
@@ -117,5 +118,52 @@ ____exports.lspconfig = {n = {
         "list workspace folders"
     }
 }}
-____exports.nvimtree = {n = {["<C-n>"] = {"<cmd> NvimTreeToggle <CR>", "toggle nvimtree"}, ["<leader>e"] = {"<cmd> NvimTreeFocus <CR>", "focus nvimtree"}}}
+____exports.nvimtree = {n = {["<C-e>"] = {"<cmd> NvimTreeToggle <CR>", "toggle nvimtree"}, ["<leader>e"] = {"<cmd> NvimTreeFocus <CR>", "focus nvimtree"}}}
+____exports.indent_blankline = {n = {["<leader>cc"] = {
+    function()
+        local utils = require("indent_blankline.utils")
+        local ok, start = utils.get_current_context(vim.g.indent_blankline_context_patterns, vim.g.indent_blankline_use_treesitter_scope)
+        if not ok then
+            return
+        end
+        vim.api.nvim_win_set_cursor(
+            vim.api.nvim_get_current_win(),
+            {start, 0}
+        )
+        vim.cmd("normal! _")
+    end,
+    "Jump to current_context"
+}}}
+____exports.comment = {
+    n = {
+        ["<leader>/"] = {
+            function()
+                require("Comment.api").toggle.linewise.current()
+            end,
+            "toggle comment"
+        },
+        ["<C-/>"] = {
+            function()
+                require("Comment.api").toggle.linewise.current()
+            end,
+            "toggle comment"
+        }
+    },
+    v = {["<leader>/"] = {"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "toggle comment"}, ["<C-/>"] = {"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "toggle comment"}}
+}
+____exports.whichkey = {n = {
+    ["<leader>wK"] = {
+        function()
+            vim.cmd("WhichKey")
+        end,
+        "which-key all keymaps"
+    },
+    ["<leader>wk"] = {
+        function()
+            local input = vim.fn.input("WhichKey: ")
+            vim.cmd("WhichKey " .. input)
+        end,
+        "which-key query lookup"
+    }
+}}
 return ____exports

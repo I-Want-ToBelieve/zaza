@@ -1,11 +1,14 @@
-const [has_alpha, alpha] = pcall<Parameters<typeof require>, NeovimPluginSetup>(
-  require,
-  'alpha'
-)
+export default () => {
+  const [has_alpha, alpha] = pcall<Parameters<typeof require>, NeovimPluginSetup>(
+    require,
+    'alpha'
+  )
 
-if (has_alpha) {
-  const button = (sc: any, txt: string, keybind: string) => {
-    const sc_ = sc.gsub('%s', '').gsub('SPC', '<leader>')
+  if (!has_alpha) return
+
+  const button = (sc: string, txt: string, keybind: string) => {
+    const [scc] = string.gsub(sc, '%s', '')
+    const [sc_] = string.gsub(scc, 'SPC', '<leader>')
     const opts = {
       position: 'center',
       text: txt,

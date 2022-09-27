@@ -1,11 +1,17 @@
-const [has_lspconfig, lspconfig] = pcall<
-  Parameters<typeof require>,
-  {
-    [key: string]: NeovimPluginSetup
-  }
->(require, 'lspconfig')
+export default () => {
+  const [has_lspconfig, lspconfig] = pcall<
+    Parameters<typeof require>,
+    {
+      [key: string]: NeovimPluginSetup
+    }
+  >(require, 'lspconfig')
 
-if (has_lspconfig) {
+  if (!has_lspconfig) {
+    return
+  }
+
+  require('plugins.ui.lsp')
+
   const on_attach = (client: any, bufnr: NeovimBuffer) => {
     if (vim.version().minor > 7) {
       client.server_capabilities.documentFormattingProvider = false
@@ -14,15 +20,15 @@ if (has_lspconfig) {
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
     }
-    // utils.load_mappings("lspconfig", { buffer: bufnr });
-    if (client.server_capabilities.signatureHelpProvider) {
-      // require("nvchad_ui.signature").setup(client);
-    }
 
     ;(require('plugins.load_mapings') as typeof import('../load_mapings')).load_mapings(
       'lspconfig',
       { scope: { type: 'buffer', buffer: bufnr } }
     )
+
+    if (client.server_capabilities.signatureHelpProvider) {
+      require('plugins.ui.signature').setup(client)
+    }
 
     const caps = client.server_capabilities
     if (caps.semanticTokensProvider && caps.semanticTokensProvider.full) {
@@ -48,6 +54,7 @@ if (has_lspconfig) {
     tagSupport: { valueSet: [1] },
     resolveSupport: { properties: ['documentation', 'detail', 'additionalTextEdits'] },
   }
+
   lspconfig.sumneko_lua.setup({
     on_attach,
     capabilities,

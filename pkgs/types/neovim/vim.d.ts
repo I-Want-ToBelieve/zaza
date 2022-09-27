@@ -1,5 +1,3 @@
-/** @noSelfInFile */
-
 type window = number
 type buffer = number
 type tabpage = number

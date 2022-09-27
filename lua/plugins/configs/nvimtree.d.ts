@@ -1,2 +1,3 @@
 /** @noSelfInFile */
-declare const has_nvimtree: boolean, nvimtree: string | NeovimPluginSetup;
+declare const _default: () => void;
+export default _default;

@@ -5,6 +5,7 @@ local Zaza = ____core.default
 Zaza.options.set({
     title = true,
     cursorline = true,
+    fillchars = "eob: ",
     clipboard = "unnamedplus",
     cmdheight = 1,
     hidden = true,

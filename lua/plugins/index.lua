@@ -12,6 +12,7 @@ if has_packer then
     local use = utils.formal_fn(packer.use)
     use("nvim-lua/plenary.nvim", {module = "plenary"})
     use("lewis6991/impatient.nvim")
+    use("MunifTanjim/nui.nvim", {disable = is_vscode, cond = can_load})
     use(
         "wbthomason/packer.nvim",
         {
@@ -89,6 +90,17 @@ if has_packer then
         }
     )
     use(
+        "jose-elias-alvarez/null-ls.nvim",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            module = "null-ls",
+            config = function()
+                require("null-ls").setup()
+            end
+        }
+    )
+    use(
         "neovim/nvim-lspconfig",
         {
             disable = is_vscode,
@@ -99,7 +111,53 @@ if has_packer then
                 require("plugins.lazy_load").on_file_open("nvim-lspconfig")
             end,
             config = function()
-                require("plugins.configs.lspconfig")
+                require("plugins.configs.lspconfig").default()
+            end
+        }
+    )
+    use(
+        "williamboman/mason-lspconfig.nvim",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            after = {"nvim-lspconfig", "mason.nvim"},
+            config = function()
+                require("mason-lspconfig").setup({ensure_installed = {
+                    "sumneko_lua",
+                    "rust_analyzer",
+                    "tsserver",
+                    "jsonls",
+                    "html",
+                    "cssls"
+                }, automatic_installation = true})
+            end
+        }
+    )
+    use(
+        "jayp0521/mason-null-ls.nvim",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            after = {"null-ls.nvim", "mason.nvim"},
+            config = function()
+                require("mason-null-ls").setup({ensure_installed = {"stylua", "eslint_d", "jq", "prettier"}, automatic_installation = true})
+                local null_ls = require("null-ls")
+                require("mason-null-ls").setup_handlers({
+                    [1] = function(source_name)
+                    end,
+                    stylua = function()
+                        null_ls.register(null_ls.builtins.formatting.stylua)
+                    end,
+                    jq = function()
+                        null_ls.register(null_ls.builtins.formatting.jq)
+                    end,
+                    eslint_d = function()
+                        null_ls.register(null_ls.builtins.formatting.eslint_d)
+                    end,
+                    prettier = function()
+                        null_ls.register(null_ls.builtins.formatting.prettier)
+                    end
+                })
             end
         }
     )
@@ -132,10 +190,10 @@ if has_packer then
         }
     )
     use(
-        "tenxsoydev/size-matters.nvim",
+        "backtolife2021/size-matters.nvim",
         {
             disable = is_vscode,
-            cond = function() return can_load end,
+            cond = can_load,
             config = function()
                 local function is_gui()
                     return vim.g.neovide or vim.g.goneovim or vim.g.nvui or vim.g.gnvim
@@ -157,7 +215,7 @@ if has_packer then
             disable = is_vscode,
             cond = can_load,
             config = function()
-                require("plugins.configs.alpha")
+                require("plugins.configs.alpha").default()
             end
         }
     )
@@ -169,49 +227,37 @@ if has_packer then
             cmd = {"NvimTreeToggle", "NvimTreeFocus"},
             ft = "alpha",
             config = function()
-                require("plugins.configs.nvimtree")
+                require("plugins.configs.nvimtree").default()
             end,
             setup = function()
                 require("plugins.load_mapings").load_mapings("nvimtree")
             end
         }
     )
-    use("kyazdani42/nvim-web-devicons", {disable = is_vscode, cond = can_load, after = "dracula"})
+    use(
+        "kyazdani42/nvim-web-devicons",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            after = "dracula",
+            module = "nvim-web-devicons",
+            config = function()
+                require("plugins.configs.web_devicons")
+            end
+        }
+    )
     use(
         "lukas-reineke/indent-blankline.nvim",
         {
             disable = is_vscode,
             cond = can_load,
-            event = "BufRead",
+            opt = true,
             config = function()
-                require("indent_blankline").setup({
-                    indentLine_enabled = 1,
-                    char = "▏",
-                    filetype_exclude = {
-                        "help",
-                        "terminal",
-                        "dashboard",
-                        "packer",
-                        "lspinfo",
-                        "TelescopePrompt",
-                        "TelescopeResults",
-                        "nvchad_cheatsheet"
-                    },
-                    buftype_exclude = {"terminal"},
-                    show_trailing_blankline_indent = false,
-                    show_first_indent_level = false
-                })
-            end
-        }
-    )
-    use(
-        "nvim-lualine/lualine.nvim",
-        {
-            disable = is_vscode,
-            cond = can_load,
-            requires = {{[1] = "kyazdani42/nvim-web-devicons", opt = true}},
-            config = function()
-                require("lualine").setup({options = {theme = "dracula"}})
+                require("plugins.configs.indent_blankline").default()
+            end,
+            setup = function()
+                require("plugins.lazy_load").on_file_open("indent-blankline.nvim")
+                require("plugins.load_mapings").load_mapings("indent_blankline")
             end
         }
     )
@@ -221,26 +267,26 @@ if has_packer then
             disable = true,
             cond = can_load,
             opt = true,
+            ft = "gitcommit",
             setup = function()
-                vim.defer_fn(
-                    function()
-                        require("packer").loader("gitsigns.nvim")
-                    end,
-                    0
+                vim.api.nvim_create_autocmd(
+                    {"BufRead"},
+                    {
+                        group = vim.api.nvim_create_augroup("GitSignsLazyLoad", {clear = true}),
+                        callback = function()
+                            vim.fn.system("git rev-parse " .. tostring(vim.fn.expand("%:p:h")))
+                            if vim.v.shell_error == 0 then
+                                vim.api.nvim_del_augroup_by_name("GitSignsLazyLoad")
+                                vim.schedule(function()
+                                    require("packer").loader("gitsigns.nvim")
+                                end)
+                            end
+                        end
+                    }
                 )
             end,
             config = function()
-                local has_gitsigns, gitsigns = pcall(require, "gitsigns")
-                if not has_gitsigns or type(gitsigns) == "string" then
-                    return nil
-                end
-                gitsigns.setup({signs = {
-                    add = {hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr"},
-                    change = {hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr"},
-                    delete = {hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr"},
-                    topdelete = {hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr"},
-                    changedelete = {hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr"}
-                }})
+                require("plugins.configs.gitsigns_").default()
             end
         }
     )
@@ -253,7 +299,7 @@ if has_packer then
             wants = "friendly-snippets",
             after = "nvim-cmp",
             config = function()
-                require("plugins.configs.luasnip")
+                require("plugins.configs.luasnip").default()
             end
         }
     )
@@ -262,13 +308,98 @@ if has_packer then
         {
             disable = is_vscode,
             cond = can_load,
+            module = "cmp",
             after = "friendly-snippets",
             config = function()
-                require("plugins.configs.cmp")
+                require("plugins.configs.cmp_").default()
             end
         }
     )
-    use("tpope/vim-commentary", {disable = is_vscode, cond = can_load})
+    use("saadparwaiz1/cmp_luasnip", {disable = is_vscode, cond = can_load, after = "LuaSnip"})
+    use("hrsh7th/cmp-nvim-lua", {disable = is_vscode, cond = can_load, after = "cmp_luasnip"})
+    use("hrsh7th/cmp-nvim-lsp", {disable = is_vscode, cond = can_load, after = "cmp-nvim-lua"})
+    use("hrsh7th/cmp-buffer", {disable = is_vscode, cond = can_load, after = "cmp-nvim-lsp"})
+    use("hrsh7th/cmp-path", {disable = is_vscode, cond = can_load, after = "cmp-buffer"})
+    use("hrsh7th/cmp-cmdline", {disable = is_vscode, cond = can_load, after = "cmp-path"})
+    use(
+        "VonHeikemen/searchbox.nvim",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            requires = {"MunifTanjim/nui.nvim"},
+            config = function()
+                vim.keymap.set("n", "<leader>s", ":SearchBoxIncSearch<CR>")
+                vim.keymap.set("n", "<C-f>", ":SearchBoxIncSearch<CR>")
+                vim.keymap.set("x", "<leader>s", ":SearchBoxIncSearch visual_mode=true<CR>")
+                vim.keymap.set("x", "<C-f>", ":SearchBoxIncSearch visual_mode=true<CR>")
+            end
+        }
+    )
+    use(
+        "windwp/nvim-autopairs",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            after = "nvim-cmp",
+            config = function()
+                require("plugins.configs.autopairs").default()
+            end
+        }
+    )
+    use(
+        "numToStr/Comment.nvim",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            module = "Comment",
+            keys = {"gc", "gb"},
+            config = function()
+                require("plugins.configs.commnet").default()
+            end,
+            setup = function()
+                require("plugins.load_mapings").load_mapings("comment")
+            end
+        }
+    )
+    use(
+        "NvChad/nvim-colorizer.lua",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            opt = true,
+            setup = function()
+                require("plugins.lazy_load").on_file_open("nvim-colorizer.lua")
+            end,
+            config = function()
+                require("plugins.configs.colorizer_").default()
+            end
+        }
+    )
+    use(
+        "folke/which-key.nvim",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            module = "which-key",
+            keys = {"<leader>", "\"", "'", "`"},
+            config = function()
+                require("plugins.configs.whichkey").default()
+            end,
+            setup = function()
+                require("plugins.load_mapings").load_mapings("whichkey")
+            end
+        }
+    )
+    use(
+        "petertriho/nvim-scrollbar",
+        {
+            disable = is_vscode,
+            cond = can_load,
+            config = function()
+                require("scrollbar").setup()
+            end
+        }
+    )
     use("backtolife2021/antovim", {event = "BufRead"})
     use(
         "Mephistophiles/surround.nvim",

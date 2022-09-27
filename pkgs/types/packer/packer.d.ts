@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-types */
-/** @noSelfInFile */
 
 /// <reference path="./util.d.ts" />
 

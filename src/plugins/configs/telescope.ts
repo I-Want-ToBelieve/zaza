@@ -51,9 +51,7 @@ if (has_telescope) {
 
   pcall(function () {
     for (const [_, ext] of ipairs(options.extensions_list)) {
-      ;(
-        telescope as unknown as { load_extension: (this: void, ext: any) => any }
-      ).load_extension(ext)
+      telescope.load_extension(ext)
     }
   })
 }

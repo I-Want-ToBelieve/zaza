@@ -1,8 +1,13 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
-has_alpha, alpha = pcall(require, "alpha")
-if has_alpha then
+local ____exports = {}
+____exports.default = function()
+    local has_alpha, alpha = pcall(require, "alpha")
+    if not has_alpha then
+        return
+    end
     local function button(sc, txt, keybind)
-        local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
+        local scc = string.gsub(sc, "%s", "")
+        local sc_ = string.gsub(scc, "SPC", "<leader>")
         local opts = {
             position = "center",
             text = txt,
@@ -66,13 +71,13 @@ if has_alpha then
         "FileType",
         {
             pattern = "alpha",
-            callback = function(self)
+            callback = function()
                 local old_laststatus = vim.opt.laststatus
                 vim.api.nvim_create_autocmd(
                     "BufUnload",
                     {
                         buffer = 0,
-                        callback = function(self)
+                        callback = function()
                             vim.opt.laststatus = old_laststatus
                         end
                     }
@@ -82,3 +87,4 @@ if has_alpha then
         }
     )
 end
+return ____exports

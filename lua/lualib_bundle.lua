@@ -55,20 +55,20 @@ local function __TS__ArrayEntries(array)
     }
 end
 
-local function __TS__ArrayEvery(self, callbackfn, thisArg)
+local function __TS__ArrayEvery(self, callbackfn)
     for i = 1, #self do
-        if not callbackfn(thisArg, self[i], i - 1, self) then
+        if not callbackfn(self[i], i - 1, self) then
             return false
         end
     end
     return true
 end
 
-local function __TS__ArrayFilter(self, callbackfn, thisArg)
+local function __TS__ArrayFilter(self, callbackfn)
     local result = {}
     local len = 0
     for i = 1, #self do
-        if callbackfn(thisArg, self[i], i - 1, self) then
+        if callbackfn(self[i], i - 1, self) then
             len = len + 1
             result[len] = self[i]
         end
@@ -76,25 +76,25 @@ local function __TS__ArrayFilter(self, callbackfn, thisArg)
     return result
 end
 
-local function __TS__ArrayForEach(self, callbackFn, thisArg)
+local function __TS__ArrayForEach(self, callbackFn)
     for i = 1, #self do
-        callbackFn(thisArg, self[i], i - 1, self)
+        callbackFn(self[i], i - 1, self)
     end
 end
 
-local function __TS__ArrayFind(self, predicate, thisArg)
+local function __TS__ArrayFind(self, predicate)
     for i = 1, #self do
         local elem = self[i]
-        if predicate(thisArg, elem, i - 1, self) then
+        if predicate(elem, i - 1, self) then
             return elem
         end
     end
     return nil
 end
 
-local function __TS__ArrayFindIndex(self, callbackFn, thisArg)
+local function __TS__ArrayFindIndex(self, callbackFn)
     for i = 1, #self do
-        if callbackFn(thisArg, self[i], i - 1, self) then
+        if callbackFn(self[i], i - 1, self) then
             return i - 1
         end
     end
@@ -157,7 +157,7 @@ do
         end
         return __TS__Iterator(arr)
     end
-    function __TS__ArrayFrom(arrayLike, mapFn, thisArg)
+    function __TS__ArrayFrom(arrayLike, mapFn)
         local result = {}
         if mapFn == nil then
             for ____, v in arrayLikeIterator(arrayLike) do
@@ -165,7 +165,7 @@ do
             end
         else
             for i, v in arrayLikeIterator(arrayLike) do
-                result[#result + 1] = mapFn(thisArg, v, i - 1)
+                result[#result + 1] = mapFn(v, i - 1)
             end
         end
         return result
@@ -228,10 +228,10 @@ local function __TS__ArrayJoin(self, separator)
     return table.concat(parts, separator)
 end
 
-local function __TS__ArrayMap(self, callbackfn, thisArg)
+local function __TS__ArrayMap(self, callbackfn)
     local result = {}
     for i = 1, #self do
-        result[i] = callbackfn(thisArg, self[i], i - 1, self)
+        result[i] = callbackfn(self[i], i - 1, self)
     end
     return result
 end
@@ -391,9 +391,9 @@ local function __TS__ArraySlice(self, first, last)
     return out
 end
 
-local function __TS__ArraySome(self, callbackfn, thisArg)
+local function __TS__ArraySome(self, callbackfn)
     for i = 1, #self do
-        if callbackfn(thisArg, self[i], i - 1, self) then
+        if callbackfn(self[i], i - 1, self) then
             return true
         end
     end
@@ -514,11 +514,11 @@ local function __TS__ArrayFlat(self, depth)
     return result
 end
 
-local function __TS__ArrayFlatMap(self, callback, thisArg)
+local function __TS__ArrayFlatMap(self, callback)
     local result = {}
     local len = 0
     for i = 1, #self do
-        local value = callback(thisArg, self[i], i - 1, self)
+        local value = callback(self[i], i - 1, self)
         if __TS__ArrayIsArray(value) then
             for j = 1, #value do
                 len = len + 1

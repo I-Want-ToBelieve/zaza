@@ -1,4 +1,3 @@
-/** @noSelfInFile */
 import * as utils from '@zaza/utils'
 
 const is_vscode = vim.g.is_vscode
@@ -26,6 +25,11 @@ if (has_packer) {
   // provided appimage.
   use('lewis6991/impatient.nvim')
 
+  use('MunifTanjim/nui.nvim', {
+    disable: is_vscode,
+    cond: can_load,
+  })
+
   // Packer can manage itself
   use('wbthomason/packer.nvim', {
     cmd: (require('plugins.cmds') as typeof import('./cmds')).packer_cmds,
@@ -51,6 +55,34 @@ if (has_packer) {
       require('plugins.configs.semantic_tokens')
     },
   })
+
+  // use('NvChad/extensions', {
+  //   disable: is_vscode,
+  //   cond: can_load,
+  //   module: ['telescope', 'nvchad'],
+  // })
+  // use('NvChad/base46', {
+  //   disable: is_vscode,
+  //   cond: can_load,
+  //   as: 'dracula',
+  //   config () {
+  //     const [ok, base46] = pcall(require, 'base46')
+
+  //     if (ok) {
+  //       base46.load_theme()
+  //     }
+  //   },
+  // })
+  // use('NvChad/ui', {
+  //   disable: is_vscode,
+  //   cond: can_load,
+  //   after: 'dracula',
+  //   config () {
+  //     const [present, nvchad_ui] = pcall(require, 'nvchad_ui')
+
+  //     if (present) nvchad_ui.setup()
+  //   },
+  // })
 
   use('dracula/vim', {
     disable: is_vscode,
@@ -128,6 +160,15 @@ if (has_packer) {
     },
   })
 
+  use('jose-elias-alvarez/null-ls.nvim', {
+    disable: is_vscode,
+    cond: can_load,
+    module: 'null-ls',
+    config () {
+      require('null-ls').setup()
+    },
+  })
+
   /**
    * @see https://github.com/neovim/nvim-lspconfig
    * @see https://github.com/NvChad/NvChad/blob/c5fe1f711e/lua/plugins/init.lua#L116
@@ -141,7 +182,54 @@ if (has_packer) {
       ;(require('lazy_load') as typeof import('./lazy_load')).on_file_open('nvim-lspconfig')
     },
     config () {
-      require('plugins.configs.lspconfig')
+      require('plugins.configs.lspconfig').default()
+    },
+  })
+
+  use('williamboman/mason-lspconfig.nvim', {
+    disable: is_vscode,
+    cond: can_load,
+    after: ['nvim-lspconfig', 'mason.nvim'],
+    config () {
+      require('mason-lspconfig').setup({
+        ensure_installed: [
+          'sumneko_lua',
+          'rust_analyzer',
+          'tsserver',
+          'jsonls',
+          'html',
+          'cssls',
+        ],
+        automatic_installation: true,
+      })
+    },
+  })
+
+  use('jayp0521/mason-null-ls.nvim', {
+    disable: is_vscode,
+    cond: can_load,
+    after: ['null-ls.nvim', 'mason.nvim'],
+    config () {
+      require('mason-null-ls').setup({
+        ensure_installed: ['stylua', 'eslint_d', 'jq', 'prettier'],
+        automatic_installation: true,
+      })
+      const null_ls = require('null-ls')
+      require('mason-null-ls').setup_handlers({
+        1: (source_name: string) => {},
+        stylua () {
+          null_ls.register(null_ls.builtins.formatting.stylua)
+        },
+        jq () {
+          null_ls.register(null_ls.builtins.formatting.jq)
+        },
+        eslint_d () {
+          null_ls.register(null_ls.builtins.formatting.eslint_d)
+        },
+        prettier () {
+          null_ls.register(null_ls.builtins.formatting.prettier)
+        },
+      })
     },
   })
 
@@ -173,9 +261,9 @@ if (has_packer) {
     },
   })
 
-  use('tenxsoydev/size-matters.nvim', {
+  use('backtolife2021/size-matters.nvim', {
     disable: is_vscode,
-    cond: () => can_load,
+    cond: can_load,
     config () {
       const is_gui = () => vim.g.neovide || vim.g.goneovim || vim.g.nvui || vim.g.gnvim
       if (is_gui()) {
@@ -193,7 +281,7 @@ if (has_packer) {
     disable: is_vscode,
     cond: can_load,
     config () {
-      require('plugins.configs.alpha')
+      require('plugins.configs.alpha').default()
     },
   })
 
@@ -203,7 +291,7 @@ if (has_packer) {
     cmd: ['NvimTreeToggle', 'NvimTreeFocus'],
     ft: 'alpha',
     config () {
-      require('plugins.configs.nvimtree')
+      require('plugins.configs.nvimtree').default()
     },
     setup () {
       ;(require('plugins.load_mapings') as typeof import('./load_mapings')).load_mapings(
@@ -216,30 +304,26 @@ if (has_packer) {
     disable: is_vscode,
     cond: can_load,
     after: 'dracula',
+    module: 'nvim-web-devicons',
+    config () {
+      require('plugins.configs.web_devicons')
+    },
   })
 
   use('lukas-reineke/indent-blankline.nvim', {
     disable: is_vscode,
     cond: can_load,
-    event: 'BufRead',
+    opt: true,
     config () {
-      ;(require('indent_blankline') as NeovimPluginSetup).setup({
-        indentLine_enabled: 1,
-        char: '▏',
-        filetype_exclude: [
-          'help',
-          'terminal',
-          'dashboard',
-          'packer',
-          'lspinfo',
-          'TelescopePrompt',
-          'TelescopeResults',
-          'nvchad_cheatsheet',
-        ],
-        buftype_exclude: ['terminal'],
-        show_trailing_blankline_indent: false,
-        show_first_indent_level: false,
-      })
+      require('plugins.configs.indent_blankline').default()
+    },
+    setup () {
+      ;(require('lazy_load') as typeof import('./lazy_load')).on_file_open(
+        'indent-blankline.nvim'
+      )
+      ;(require('plugins.load_mapings') as typeof import('./load_mapings')).load_mapings(
+        'indent_blankline'
+      )
     },
   })
 
@@ -266,48 +350,44 @@ if (has_packer) {
   //   config () {},
   // })
 
-  use('nvim-lualine/lualine.nvim', {
-    disable: is_vscode,
-    cond: can_load,
-    requires: [{ 1: 'kyazdani42/nvim-web-devicons', opt: true }],
-    config () {
-      ;(require('lualine') as NeovimPluginSetup).setup({
-        options: {
-          theme: 'dracula',
-        },
-      })
-    },
-  })
+  // use('nvim-lualine/lualine.nvim', {
+  //   disable: is_vscode,
+  //   cond: can_load,
+  //   requires: [{ 1: 'kyazdani42/nvim-web-devicons', opt: true }],
+  //   config () {
+  //     ;(require('lualine') as NeovimPluginSetup).setup({
+  //       options: {
+  //         theme: 'dracula',
+  //       },
+  //     })
+  //   },
+  // })
 
   use('lewis6991/gitsigns.nvim', {
     disable: true,
     cond: can_load,
     opt: true,
+    ft: 'gitcommit',
     setup () {
-      vim.defer_fn(() => {
-        ;(require('packer') as Packer).loader('gitsigns.nvim')
-      }, 0)
-    },
-    config () {
-      const [has_gitsigns, gitsigns] = pcall<Parameters<typeof require>, NeovimPluginSetup>(
-        require,
-        'gitsigns'
-      )
-      if (!has_gitsigns || typeof gitsigns === 'string') return null
-
-      gitsigns.setup({
-        signs: {
-          add: { hl: 'DiffAdd', text: '│', numhl: 'GitSignsAddNr' },
-          change: { hl: 'DiffChange', text: '│', numhl: 'GitSignsChangeNr' },
-          delete: { hl: 'DiffDelete', text: '', numhl: 'GitSignsDeleteNr' },
-          topdelete: { hl: 'DiffDelete', text: '‾', numhl: 'GitSignsDeleteNr' },
-          changedelete: { hl: 'DiffChangeDelete', text: '~', numhl: 'GitSignsChangeNr' },
+      vim.api.nvim_create_autocmd(['BufRead'], {
+        group: vim.api.nvim_create_augroup('GitSignsLazyLoad', { clear: true }),
+        callback () {
+          vim.fn.system('git rev-parse ' + vim.fn.expand('%:p:h'))
+          if (vim.v.shell_error === 0) {
+            vim.api.nvim_del_augroup_by_name('GitSignsLazyLoad')
+            vim.schedule(() => {
+              require('packer').loader('gitsigns.nvim')
+            })
+          }
         },
       })
     },
+    config () {
+      require('plugins.configs.gitsigns_').default()
+    },
   })
 
-  //   // load luasnips + cmp related in insert mode only
+  //  load luasnips + cmp related in insert mode only
 
   use('rafamadriz/friendly-snippets', {
     disable: is_vscode,
@@ -321,59 +401,97 @@ if (has_packer) {
     wants: 'friendly-snippets',
     after: 'nvim-cmp',
     config () {
-      require('plugins.configs.luasnip')
+      require('plugins.configs.luasnip').default()
     },
   })
 
   use('hrsh7th/nvim-cmp', {
     disable: is_vscode,
     cond: can_load,
+    module: 'cmp',
     after: 'friendly-snippets',
     config () {
-      require('plugins.configs.cmp')
+      require('plugins.configs.cmp_').default()
+    },
+  })
+  use('saadparwaiz1/cmp_luasnip', { disable: is_vscode, cond: can_load, after: 'LuaSnip' })
+  use('hrsh7th/cmp-nvim-lua', { disable: is_vscode, cond: can_load, after: 'cmp_luasnip' })
+  use('hrsh7th/cmp-nvim-lsp', { disable: is_vscode, cond: can_load, after: 'cmp-nvim-lua' })
+  use('hrsh7th/cmp-buffer', { disable: is_vscode, cond: can_load, after: 'cmp-nvim-lsp' })
+  use('hrsh7th/cmp-path', { disable: is_vscode, cond: can_load, after: 'cmp-buffer' })
+  use('hrsh7th/cmp-cmdline', { disable: is_vscode, cond: can_load, after: 'cmp-path' })
+
+  use('VonHeikemen/searchbox.nvim', {
+    disable: is_vscode,
+    cond: can_load,
+    requires: ['MunifTanjim/nui.nvim'],
+    config () {
+      vim.keymap.set('n', '<leader>s', ':SearchBoxIncSearch<CR>')
+      vim.keymap.set('n', '<C-f>', ':SearchBoxIncSearch<CR>')
+      vim.keymap.set('x', '<leader>s', ':SearchBoxIncSearch visual_mode=true<CR>')
+      vim.keymap.set('x', '<C-f>', ':SearchBoxIncSearch visual_mode=true<CR>')
     },
   })
 
-  // use('saadparwaiz1/cmp_luasnip', {
-  //   disable: is_vscode,
-  //   cond: can_load,
-  //   after: 'LuaSnip',
-  // })
-
-  // use('hrsh7th/cmp-nvim-lua', {
-  //   disable: is_vscode,
-  //   cond: can_load,
-  //   after: 'cmp_luasnip',
-  // })
-
-  // use('hrsh7th/cmp-nvim-lsp', {
-  //   disable: is_vscode    // use('dracula/vim', {
-  //   disable: is_vscode,
-  //   cond: can_load,
-  //   as: 'dracula',
-  //   config () {
-  //     vim.cmd('colorscheme dracula')
-  //   },
-  // },
-  //   cond: can_load,
-  //   after: 'cmp-nvim-lua',
-  // })
-
-  // use('hrsh7th/cmp-buffer', {
-  //   disable: is_vscode,
-  //   cond: can_load,
-  //   after: 'cmp-nvim-lsp',
-  // })
-
-  // use('hrsh7th/cmp-path', {
-  //   disable: is_vscode,
-  //   cond: can_load,
-  //   after: 'cmp-buffer',
-  // })
-
-  use('tpope/vim-commentary', {
+  use('windwp/nvim-autopairs', {
     disable: is_vscode,
     cond: can_load,
+    after: 'nvim-cmp',
+    config () {
+      require('plugins.configs.autopairs').default()
+    },
+  })
+
+  use('numToStr/Comment.nvim', {
+    disable: is_vscode,
+    cond: can_load,
+    module: 'Comment',
+    keys: ['gc', 'gb'],
+    config () {
+      require('plugins.configs.commnet').default()
+    },
+    setup () {
+      ;(require('plugins.load_mapings') as typeof import('./load_mapings')).load_mapings(
+        'comment'
+      )
+    },
+  })
+
+  use('NvChad/nvim-colorizer.lua', {
+    disable: is_vscode,
+    cond: can_load,
+    opt: true,
+    setup () {
+      ;(require('lazy_load') as typeof import('./lazy_load')).on_file_open(
+        'nvim-colorizer.lua'
+      )
+    },
+    config () {
+      require('plugins.configs.colorizer_').default()
+    },
+  })
+
+  use('folke/which-key.nvim', {
+    disable: is_vscode,
+    cond: can_load,
+    module: 'which-key',
+    keys: ['<leader>', '"', "'", '`'],
+    config () {
+      require('plugins.configs.whichkey').default()
+    },
+    setup () {
+      ;(require('plugins.load_mapings') as typeof import('./load_mapings')).load_mapings(
+        'whichkey'
+      )
+    },
+  })
+
+  use('petertriho/nvim-scrollbar', {
+    disable: is_vscode,
+    cond: can_load,
+    config () {
+      require('scrollbar').setup()
+    },
   })
 
   use('backtolife2021/antovim', {

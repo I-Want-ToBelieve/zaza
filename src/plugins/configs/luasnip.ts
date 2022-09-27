@@ -1,11 +1,11 @@
-/** @noSelfInFile */
+export default () => {
+  const [has_luasnip, luasnip] = pcall<Parameters<typeof require>, Luasnip>(
+    require,
+    'luasnip'
+  )
 
-require('plugins.configs.luasnip')
-const [has_luasnip, luasnip] = pcall<Parameters<typeof require>, Luasnip>(
-  require,
-  'luasnip'
-)
-if (has_luasnip) {
+  if (!has_luasnip) return
+
   const options = { history: true, updateevents: 'TextChanged,TextChangedI' }
   luasnip.config.set_config(options)
   require('luasnip.loaders.from_vscode').lazy_load({ paths: vim.g.luasnippets_path || '' })

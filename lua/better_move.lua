@@ -16,7 +16,7 @@ Zaza.keymaps({
 Zaza.keymaps.set(keymaps_options)
 Zaza.keymaps.set(__TS__ArrayMap(
     keymaps_options,
-    function(____, it) return __TS__ObjectAssign(
+    function(it) return __TS__ObjectAssign(
         {},
         it,
         {

@@ -4,7 +4,8 @@ require("global")
 require("options")
 require("better_move")
 require("vscode")
-require("neovide")
+require("./neovide")
+require("./disable_mappings")
 require("./packages")
 vim.defer_fn(
     function()
@@ -12,6 +13,8 @@ vim.defer_fn(
     end,
     0
 )
+local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+vim.env.PATH = ((tostring(vim.env.PATH) .. (is_windows and ";" or ":")) .. tostring(vim.fn.stdpath("data"))) .. "/mason/bin"
 local disabled_builtin_plugins = {
     "2html_plugin",
     "getscript",

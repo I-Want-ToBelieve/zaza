@@ -11,8 +11,8 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "one": "pnpm build:all && nvim +'hi NormalFloat guibg=#1e222a'",
-    "one:clean": "pnpm build:all && pnpm clean && nvim +'hi NormalFloat guibg=#1e222a'",
+    "one": "pnpm build:all && esno ./scripts/remove_this_args.ts && nvim +'hi NormalFloat guibg=#1e222a' +PackerInstall +PackerCompile",
+    "one:clean": "pnpm build:all && esno ./scripts/remove_this_args.ts && pnpm clean && nvim +'hi NormalFloat guibg=#1e222a'",
     "build": "rm -rf ./lua && tstl",
     "build:all": " pnpm recursive run build && pnpm build",
     "clean": "rm -rf ~/.local/share/nvim/site/pack/packer/ && rm -rf plugin/",
@@ -59,10 +59,12 @@
     "husky": "^8.0.1",
     "lerna": "^5.5.2",
     "lint-staged": "^13.0.3",
+    "lua-to-typescript": "^0.2.2",
     "lua-types": "^2.13.0",
     "luaparse": "^0.3.1",
     "prettier": "github:aMarCruz/prettier",
     "remark-parse": "^10.0.1",
+    "replace-in-file": "^6.3.5",
     "supports-color": "^9.2.3",
     "ts-node": "^10.9.1",
     "turbo": "^1.5.3",
@@ -80,7 +82,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "typescript-to-lua@1.10.1": "patches/typescript-to-lua@1.10.1.patch"
+      "typescript-to-lua@1.10.1": "patches/typescript-to-lua@1.10.1.patch",
+      "lua-to-typescript@0.2.2": "patches/lua-to-typescript@0.2.2.patch"
     }
   }
 }

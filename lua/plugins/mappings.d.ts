@@ -17,16 +17,18 @@ export declare const telescope: {
 export declare const fterm: {
     n: {
         "<A-t>": string[];
+        "<C-@>": string[];
     };
     t: {
         "<A-t>": string[];
+        "<C-@>": string[];
     };
 };
 export declare const lspconfig: {
     n: {
         gD: (string | (() => void))[];
         gd: (string | (() => void))[];
-        K: (string | (() => void))[];
+        H: (string | (() => void))[];
         gi: (string | (() => void))[];
         "<leader>ls": (string | (() => void))[];
         "<leader>D": (string | (() => void))[];
@@ -45,7 +47,28 @@ export declare const lspconfig: {
 };
 export declare const nvimtree: {
     n: {
-        "<C-n>": string[];
+        "<C-e>": string[];
         "<leader>e": string[];
+    };
+};
+export declare const indent_blankline: {
+    n: {
+        "<leader>cc": (string | (() => void))[];
+    };
+};
+export declare const comment: {
+    n: {
+        "<leader>/": (string | (() => void))[];
+        "<C-/>": (string | (() => void))[];
+    };
+    v: {
+        "<leader>/": string[];
+        "<C-/>": string[];
+    };
+};
+export declare const whichkey: {
+    n: {
+        "<leader>wK": (string | (() => void))[];
+        "<leader>wk": (string | (() => void))[];
     };
 };

@@ -1,5 +1,3 @@
-/** @noSelfInFile */
-
 /** @noSelf */
 declare module 'surround' {
   /** @onSelf */

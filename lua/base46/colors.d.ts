@@ -1,0 +1,33 @@
+/** @noSelfInFile */
+export declare const dracula: {
+    white: string;
+    darker_black: string;
+    black: string;
+    black2: string;
+    one_bg: string;
+    one_bg2: string;
+    one_bg3: string;
+    grey: string;
+    grey_fg: string;
+    grey_fg2: string;
+    light_grey: string;
+    red: string;
+    baby_pink: string;
+    pink: string;
+    line: string;
+    green: string;
+    vibrant_green: string;
+    nord_blue: string;
+    blue: string;
+    yellow: string;
+    sun: string;
+    purple: string;
+    dark_purple: string;
+    teal: string;
+    orange: string;
+    cyan: string;
+    statusline_bg: string;
+    lightbg: string;
+    pmenu_bg: string;
+    folder_bg: string;
+};

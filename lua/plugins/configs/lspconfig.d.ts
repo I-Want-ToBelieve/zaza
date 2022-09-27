@@ -1,4 +1,3 @@
 /** @noSelfInFile */
-declare const has_lspconfig: boolean, lspconfig: string | {
-    [key: string]: NeovimPluginSetup;
-};
+declare const _default: () => void;
+export default _default;

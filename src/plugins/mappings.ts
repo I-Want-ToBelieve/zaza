@@ -20,9 +20,11 @@ export const telescope = {
 export const fterm = {
   n: {
     ['<A-t>']: ['<cmd>lua require("FTerm").toggle()<CR>', 'pick hidden term'],
+    ['<C-@>']: ['<cmd>lua require("FTerm").toggle()<CR>', 'pick hidden term'], // Ctrl + `
   },
   t: {
     ['<A-t>']: ['<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', 'nvchad themes'],
+    ['<C-@>']: ['<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', 'nvchad themes'],
   },
 }
 
@@ -44,7 +46,7 @@ export const lspconfig = {
       },
       'lsp definition',
     ],
-    ['K']: [
+    ['H']: [
       () => {
         ;(vim.lsp as unknown as { buf: { hover: (this: void) => {} } }).buf.hover()
       },
@@ -76,7 +78,7 @@ export const lspconfig = {
     ],
     ['<leader>ra']: [
       () => {
-        // require('nvchad_ui.renamer').open()
+        require('plugins.ui.renamer').open()
       },
       'lsp rename',
     ],
@@ -161,7 +163,81 @@ export const lspconfig = {
 
 export const nvimtree = {
   n: {
-    ['<C-n>']: ['<cmd> NvimTreeToggle <CR>', 'toggle nvimtree'],
+    ['<C-e>']: ['<cmd> NvimTreeToggle <CR>', 'toggle nvimtree'],
     ['<leader>e']: ['<cmd> NvimTreeFocus <CR>', 'focus nvimtree'],
+  },
+}
+
+export const indent_blankline = {
+  n: {
+    ['<leader>cc']: [
+      () => {
+        const utils = require('indent_blankline.utils')
+
+        const [ok, start] = (
+          utils as {
+            get_current_context: (
+              this: void,
+              a: any,
+              b: any
+            ) => LuaMultiReturn<[boolean, number]>
+          }
+        ).get_current_context(
+          vim.g.indent_blankline_context_patterns,
+          vim.g.indent_blankline_use_treesitter_scope
+        )
+
+        if (!ok) return
+
+        vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), [start, 0])
+        vim.cmd('normal! _')
+      },
+      'Jump to current_context',
+    ],
+  },
+}
+
+export const comment = {
+  n: {
+    ['<leader>/']: [
+      () => {
+        require('Comment.api').toggle.linewise.current()
+      },
+      'toggle comment',
+    ],
+    ['<C-/>']: [
+      () => {
+        require('Comment.api').toggle.linewise.current()
+      },
+      'toggle comment',
+    ],
+  },
+  v: {
+    ['<leader>/']: [
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      'toggle comment',
+    ],
+    ['<C-/>']: [
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      'toggle comment',
+    ],
+  },
+}
+
+export const whichkey = {
+  n: {
+    ['<leader>wK']: [
+      () => {
+        vim.cmd('WhichKey')
+      },
+      'which-key all keymaps',
+    ],
+    ['<leader>wk']: [
+      () => {
+        const input = vim.fn.input('WhichKey: ')
+        vim.cmd('WhichKey ' + input)
+      },
+      'which-key query lookup',
+    ],
   },
 }
