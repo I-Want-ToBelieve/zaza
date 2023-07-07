@@ -48,7 +48,7 @@ if (has_lspconfig) {
     tagSupport: { valueSet: [1] },
     resolveSupport: { properties: ['documentation', 'detail', 'additionalTextEdits'] },
   }
-  lspconfig.sumneko_lua.setup({
+  lspconfig.lua_ls.setup({
     on_attach,
     capabilities,
     settings: {
